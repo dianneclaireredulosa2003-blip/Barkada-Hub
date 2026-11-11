@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barkada Hub - Discussion Details</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#F4F5F1;
+color:#30493D;
+}
+
+.container{
+display:flex;
+min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:160px;
+    background:#fff;
+    border-right:1px solid #e5e7e4;
+    display:flex;
+    flex-direction:column;
+    padding:14px 10px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:28px;
+}
+
+.logo-icon{
+    width:32px;
+    height:32px;
+    border-radius:9px;
+    background:#356c54;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.logo-small{
+    font-size:8px;
+    letter-spacing:1px;
+    color:#587060;
+}
+
+.logo-title{
+    font-size:15px;
+    font-weight:700;
+    color:#223f31;
+}
+
+.menu-title{
+font-size:8px;
+letter-spacing:1px;
+color:#9AA09B;
+margin-bottom:10px;
+}
+.menu a{
+display:flex;
+align-items:center;
+gap:8px;
+padding:10px;
+border-radius:8px;
+text-decoration:none;
+color:#6E746F;
+font-size:11px;
+margin-bottom:4px;
+}
+
+.menu a.active{
+background:#EAF1EB;
+color:#356C54;
+font-weight:600;
+}
+
+.voice-card{
+background:#EAF1EB;
+padding:12px;
+border-radius:12px;
+margin-top:20px;
+}
+
+.voice-card i{
+color:#356C54;
+font-size:14px;
+}
+
+.voice-card h4{
+font-size:12px;
+margin:10px 0;
+}
+.voice-card p{
+font-size:10px;
+line-height:1.5;
+color:#7F857F;
+}
+
+.voice-card button{
+width:100%;
+margin-top:10px;
+height:32px;
+border:none;
+background:#356C54;
+color:white;
+border-radius:8px;
+cursor:pointer;
+font-size:11px;
+}
+
+.sidebar-footer{
+margin-top:auto;
+padding-top:12px;
+border-top:1px solid #ECECEC;
+}
+
+.sidebar-footer a{
+display:block;
+font-size:10px;
+color:#8B918D;
+text-decoration:none;
+margin-top:10px;
+}
+/* MAIN */
+
+.main{
+flex:1;
+}
+
+.topbar{
+height:48px;
+background:#fff;
+border-bottom:1px solid #E4E6E2;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 20px;
+}
+
+.quote{
+font-size:11px;
+color:#7C827D;
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.avatar{
+width:28px;
+height:28px;
+border-radius:50%;
+background:#DDE9DE;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:11px;
+font-weight:600;
+color:#356C54;
+}
+
+.profile-info strong{
+display:block;
+font-size:11px;
+}
+.profile-info small{
+font-size:9px;
+color:#999;
+}
+
+/* PAGE */
+
+.content{
+width:900px;
+margin:0 auto;
+padding:24px 0;
+}
+
+.back-link{
+display:inline-flex;
+align-items:center;
+gap:6px;
+text-decoration:none;
+font-size:12px;
+font-weight:600;
+color:#356C54;
+margin-bottom:16px;
+}
+
+.page-grid{
+display:grid;
+grid-template-columns:680px 200px;
+gap:16px;
+align-items:start;
+}
+/* CARDS */
+
+.card{
+background:white;
+border:1px solid #E3E7E2;
+border-radius:16px;
+padding:18px;
+margin-bottom:14px;
+}
+
+/* DISCUSSION CARD */
+
+.post-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+margin-bottom:12px;
+}
+.author{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.author-avatar{
+width:24px;
+height:24px;
+border-radius:50%;
+background:#DDEADC;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:10px;
+color:#356C54;
+}
+
+.author-name{
+font-size:11px;
+font-weight:600;
+line-height:1;
+margin-bottom:4px;
+}
+
+.author-date{
+font-size:9px;
+color:#9AA09B;
+}
+.report{
+font-size:10px;
+color:#98A09A;
+display:flex;
+align-items:center;
+gap:4px;
+}
+
+.tag{
+display:inline-block;
+background:#EDF3EE;
+color:#356C54;
+font-size:9px;
+padding:5px 7px;
+border-radius:5px;
+margin-bottom:14px;
+}
+
+.discussion-title{
+font-size:20px;
+font-weight:700;
+line-height:1.2;
+margin-bottom:15px;
+}
+
+.discussion-body{
+font-size:12px;
+line-height:1.9;
+color:#616963;
+margin-bottom:12px;
+}
+
+.post-footer{
+display:flex;
+align-items:center;
+gap:12px;
+margin-top:15px;
+padding-top:12px;
+border-top:1px solid #EFEFEF;
+}
+.support-pill{
+background:#EDF3EE;
+padding:8px 12px;
+border-radius:8px;
+font-size:11px;
+color:#356C54;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.reply-counter{
+font-size:11px;
+color:#777;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+/* REPLIES */
+
+.reply-header{
+display:flex;
+justify-content:space-between;
+margin-bottom:14px;
+}
+.reply-header h3{
+font-size:14px;
+}
+
+.reply-header small{
+font-size:10px;
+color:#999;
+}
+
+.reply{
+padding:14px 0;
+}
+
+.reply:not(:last-of-type){
+border-bottom:1px solid #EFEFEF;
+}
+
+.reply-top{
+display:flex;
+align-items:center;
+}
+
+.reply-avatar{
+width:26px;
+height:26px;
+border-radius:50%;
+background:#F3E8D7;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:10px;
+font-weight:600;
+color:#8C7552;
+margin-right:10px;
+}
+
+.reply-user{
+font-size:11px;
+}
+
+.reply-user span{
+color:#9A9A9A;
+font-size:10px;
+}
+
+.reply-report{
+margin-left:auto;
+font-size:10px;
+color:#9A9A9A;
+}
+
+.reply p{
+margin-left:36px;
+margin-top:8px;
+font-size:12px;
+color:#666;
+line-height:1.7;
+}
+
+.reply-actions{
+margin-left:36px;
+margin-top:8px;
+display:flex;
+gap:16px;
+font-size:11px;
+color:#7C817D;
+}
+
+.more-link{
+display:inline-block;
+margin-top:14px;
+font-size:12px;
+color:#356C54;
+text-decoration:none;
+font-weight:600;
+}
+
+/* COMPOSER */
+
+.composer-user{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:11px;
+margin-bottom:10px;
+}
+.reply-area{
+width:100%;
+height:48px;
+border:1px solid #DDE2DD;
+border-radius:6px;
+padding:10px;
+resize:none;
+}
+
+.composer-footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:12px;
+}
+
+.composer-footer small{
+font-size:10px;
+color:#A0A5A0;
+}
+.post-btn{
+width:80px;
+height:28px;
+background:#356C54;
+border:none;
+border-radius:6px;
+color:white;
+font-size:11px;
+cursor:pointer;
+}
+
+/* RIGHT SIDE */
+
+.side-card{
+background:white;
+border:1px solid #E3E7E2;
+border-radius:16px;
+padding:16px;
+margin-bottom:14px;
+}
+.side-card h3{
+font-size:13px;
+margin-bottom:12px;
+}
+
+.side-card p{
+font-size:11px;
+color:#757575;
+line-height:1.6;
+margin-bottom:10px;
+}
+
+.side-card ul{
+padding-left:18px;
+}
+
+.side-card li{
+font-size:11px;
+color:#666;
+margin-bottom:10px;
+}
+
+.side-card a{
+text-decoration:none;
+font-size:11px;
+font-weight:600;
+color:#356C54;
+}
+.resource-card{
+background:#EAF1EB;
+border-radius:16px;
+padding:16px;
+margin-bottom:14px;
+min-height:150px;
+}
+
+.resource-card h3{
+font-size:13px;
+margin-bottom:10px;
+}
+
+.resource-card p{
+font-size:11px;
+color:#666;
+line-height:1.6;
+}
+
+.resource-card small{
+display:block;
+margin:12px 0;
+font-size:10px;
+color:#356C54;
+font-weight:600;
+}
+.notice-card{
+background:#F4EEE1;
+border-radius:12px;
+padding:12px;
+}
+
+.notice-card strong{
+display:block;
+font-size:11px;
+margin-bottom:6px;
+}
+
+.notice-card p{
+font-size:10px;
+line-height:1.5;
+color:#666;
+}
+.user-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+
+<aside class="sidebar">
+
+<div
+class="logo"
+style="cursor:pointer;"
+onclick="window.location.href='dashboard.html'">
+<div class="logo-icon">
+<i class="fas fa-user-group"></i>
+</div>
+
+<div>
+<small>PLMUN</small>
+<strong>Barkada Hub</strong>
+</div>
+</div>
+
+<div class="menu-title">
+YOUR COMMUNITY
+</div>
+
+<div class="menu">
+
+<a href="dashboard.html">
+<i class="fas fa-house"></i>
+Home
+</a>
+
+<a href="discussions.html" class="active">
+<i class="far fa-comments"></i>
+Discussions
+</a>
+<a href="resources.html">
+Wellness resources
+</a>
+
+<a href="profile.html">
+<i class="far fa-user"></i>
+My profile
+</a>
+
+</div>
+
+<div class="voice-card">
+
+<i class="fas fa-leaf"></i>
+
+<h4>Your voice belongs here.</h4>
+
+<p>
+A small thought can start a meaningful conversation.
+</p>
+
+<button
+onclick="window.location.href='create-discussion.html'">
++ Share a thought
+</button>
+
+</div>
+
+<div class="sidebar-footer">
+<a href="#"
+onclick="showGuidelines()">
+Community guidelines
+</a>
+<a href="#" onclick="logout()">
+Sign out
+</a>
+</div>
+
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+     <div class="quote">
+A little connection goes a long way.
+</div>
+
+<div class="profile">
+
+<div
+class="avatar"
+id="avatar"
+style="cursor:pointer;"
+onclick="window.location.href='profile.html'">
+MS
+</div>
+
+<div
+class="profile-info"
+style="cursor:pointer;"
+onclick="window.location.href='profile.html'">
+<strong id="studentName">
+Student
+</strong>
+<small>PLMUN Student</small>
+</div>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<a href="discussions.html" class="back-link">
+<i class="fas fa-arrow-left"></i>
+Back to discussions
+</a>
+
+<div class="page-grid">
+
+<!-- LEFT -->
+
+<div>
+ <div class="card">
+
+<div class="post-top">
+
+<div class="author">
+
+<div class="author-avatar">
+<i class="fas fa-leaf"></i>
+</div>
+
+<div>
+<div class="author-name">
+Anonymous student
+</div>
+
+<div class="author-date">
+Nov 7, 2026 • 25 minutes ago
+</div>
+</div>
+
+</div>
+
+<div
+class="report"
+onclick="reportPost()"
+style="cursor:pointer;">
+<i class="far fa-flag"></i>
+Report
+</div>
+
+</div>
+
+<div class="tag">
+Academic life
+</div>
+
+<h1 class="discussion-title">
+Anyone else feeling overwhelmed by deadlines?
+</h1>
+  <p class="discussion-body">
+I've been trying to keep up with everything this week. Between group projects and quizzes, it feels like there's always one more thing to finish.
+</p>
+
+<p class="discussion-body">
+I know I need rest, but I feel guilty whenever I step away. How do you take a break without feeling like you're falling behind?
+</p>
+
+<div class="post-footer">
+
+<div
+class="support-pill"
+style="cursor:pointer;"
+onclick="supportPost(this)">
+<i class="far fa-heart"></i>
+Supported · 19
+</div>
+
+<div class="reply-counter">
+<i class="far fa-comment"></i>
+6 replies
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="reply-header">
+<h3>A little support from your barkada</h3>
+<small>Oldest first</small>
+</div>
+
+<div class="reply">
+ <div class="reply-top">
+<div class="reply-avatar">JD</div>
+
+<div class="reply-user">
+<strong>Jana Dela Cruz</strong>
+<span> • 18 min ago</span>
+</div>
+
+<div class="reply-report">
+Report
+</div>
+</div>
+
+<p>
+I hear you. I felt this way last week too. What helped me was choosing just one small task, then taking a proper break. You don't have to earn your rest.
+</p>
+
+<div class="reply-actions">
+<span>♡ 8 support</span>
+<span>Reply</span>
+</div>
+
+</div>
+
+<div class="reply">
+
+<div class="reply-top">
+<div class="reply-avatar">LM</div>
+
+<div class="reply-user">
+<strong>Luis Mendoza</strong>
+<span> • 10 min ago</span>
+</div>
+
+<div class="reply-report">
+Report
+</div>
+</div>
+ <p>
+You're not alone in this. I told a groupmate I was stretched thin, and we worked out a more manageable plan.
+</p>
+
+<div class="reply-actions">
+<span>♡ 5 support</span>
+<span>Reply</span>
+</div>
+
+</div>
+
+<a href="#" class="more-link">
+View 4 more replies
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="composer-user">
+
+<div class="avatar" id="replyAvatar">
+MS
+</div>
+
+<strong id="replyingAs">
+Replying as Student
+</strong>
+
+</div>
+ <textarea
+id="replyText"
+class="reply-area"
+placeholder="Offer a kind word or share what helped you...">
+</textarea>
+
+<div class="composer-footer">
+
+    <small>
+        Listen first. Be kind. Respect their privacy.
+    </small>
+
+    <button
+    class="post-btn"
+    onclick="addReply()">
+
+        Post reply
+
+    </button>
+
+</div>
+<div id="dynamicReplies"></div>
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div>
+
+<div class="side-card">
+
+<h3>A kinder space, together</h3>
+
+<p>
+Listen without judgment. Share what helped you, not what someone "should" do.
+</p>
+
+<ul>
+<li>Respect privacy and personal boundaries.</li>
+<li>No harassment or harmful content.</li>
+<li>Use Report if something feels unsafe.</li>
+</ul>
+
+<a href="#"
+onclick="showGuidelines()">
+Read community guidelines →
+</a>
+</div>
+
+<div class="resource-card">
+
+<h3>
+When school feels like a lot
+</h3>
+
+<p>
+A practical guide to breaking up big tasks and making space for rest.
+</p>
+
+<small>
+5 min read · Self-care
+</small>
+
+<a href="#" style="font-size:11px;color:#356C54;text-decoration:none;">
+Read the resource →
+</a>
+
+</div>
+
+<div class="notice-card">
+
+<strong>
+Peer support, not professional care
+</strong>
+
+<p>
+Barkada Hub is not an emergency service. If you feel unsafe or need urgent help, contact local emergency services or a trusted person nearby.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+<script>
+const currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+if(
+    !currentUser ||
+    currentUser.role === "admin"
+){
+    window.location.href = "login.html";
+}
+
+document.getElementById("studentName").innerText =
+currentUser.fullname;
+
+const initials =
+currentUser.fullname
+.split(" ")
+.map(name => name.charAt(0))
+.join("")
+.substring(0,2);
+
+if(currentUser.photo){
+
+    document.getElementById("avatar")
+    .innerHTML =
+    `<img src="${currentUser.photo}" class="user-photo">`;
+
+}else{
+
+    document.getElementById("avatar").innerText =
+    initials;
+
+}
+document.getElementById("replyAvatar").innerText =
+initials;
+function logout(){
+
+    if(confirm(
+    "Are you sure you want to sign out?"
+    )){
+
+        localStorage.removeItem(
+        "currentUser"
+        );
+
+        window.location.replace(
+        "login.html"
+        );
+
+    }
+
+}
+function showGuidelines(){
+
+alert(`
+BARKADA HUB GUIDELINES
+
+• Respect privacy
+• Be supportive
+• No bullying
+• No harassment
+• No hate speech
+• Report unsafe content
+`);
+
+}
+function addReply(){
+
+    const replyText =
+    document.getElementById(
+    "replyText"
+    ).value.trim();
+
+    if(!replyText){
+
+        alert(
+        "Please enter a reply."
+        );
+
+        return;
+
+    }
+
+    let replies =
+    JSON.parse(
+    localStorage.getItem("replies")
+    ) || [];
+
+    replies.push({
+
+        author:
+        currentUser.fullname,
+
+        message:
+        replyText,
+
+        date:
+        new Date()
+        .toLocaleString()
+
+    });
+
+    localStorage.setItem(
+        "replies",
+        JSON.stringify(replies)
+    );
+
+    document.getElementById(
+        "replyText"
+    ).value = "";
+
+    loadReplies();
+
+}
+function loadReplies(){
+
+    const container =
+    document.getElementById(
+    "dynamicReplies"
+    );
+
+    const replies =
+    JSON.parse(
+    localStorage.getItem(
+    "replies"
+    )
+    ) || [];
+
+    container.innerHTML = "";
+
+    replies.forEach(reply=>{
+
+        container.innerHTML += `
+
+<div class="card">
+
+<strong>
+${reply.author}
+</strong>
+
+<br><br>
+
+${reply.message}
+
+<br><br>
+
+<small>
+${reply.date}
+</small>
+
+</div>
+
+`;
+
+    });
+
+}
+loadReplies();
+
+function supportPost(element){
+
+    element.innerHTML =
+    '<i class="fas fa-heart"></i> Supported · 20';
+
+    element.style.background =
+    "#d9efe0";
+
+}
+
+function reportPost(){
+
+    alert(
+    "Thank you. This content has been reported for review."
+    );
+
+}
+
+</script>
+</body>
+</html>

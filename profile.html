@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile - Barkada Hub</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#F5F6F2;
+color:#30493D;
+}
+
+.container{
+display:flex;
+min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:150px;
+background:white;
+border-right:1px solid #E5E8E3;
+padding:14px;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+display:flex;
+gap:8px;
+align-items:center;
+margin-bottom:28px;
+}
+.logo-icon{
+width:28px;
+height:28px;
+border-radius:8px;
+background:#356C54;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.logo small{
+display:block;
+font-size:7px;
+letter-spacing:1px;
+color:#738073;
+}
+
+.logo strong{
+display:block;
+font-size:14px;
+}
+
+.community{
+font-size:8px;
+letter-spacing:1px;
+color:#98A09B;
+margin-bottom:12px;
+}
+
+.menu a{
+display:flex;
+align-items:center;
+gap:8px;
+text-decoration:none;
+padding:10px;
+border-radius:8px;
+font-size:11px;
+color:#717771;
+margin-bottom:4px;
+}
+.menu a.active{
+background:#EAF1EB;
+color:#356C54;
+font-weight:600;
+}
+
+.voice-card{
+margin-top:20px;
+background:#EDF3EE;
+padding:12px;
+border-radius:12px;
+}
+
+.voice-card h4{
+font-size:12px;
+margin:8px 0;
+}
+
+.voice-card p{
+font-size:10px;
+line-height:1.5;
+color:#7E867F;
+}
+
+.voice-card button{
+width:100%;
+height:32px;
+margin-top:10px;
+background:#356C54;
+border:none;
+border-radius:8px;
+color:white;
+font-size:11px;
+cursor:pointer;
+}
+.sidebar-footer{
+margin-top:auto;
+border-top:1px solid #ECECEC;
+padding-top:10px;
+}
+
+.sidebar-footer a{
+display:block;
+font-size:10px;
+color:#949994;
+text-decoration:none;
+margin-top:10px;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+}
+
+.topbar{
+height:56px;
+background:white;
+border-bottom:1px solid #E5E8E3;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 26px;
+}
+
+.quote{
+font-size:11px;
+color:#7C837E;
+}
+
+.profile-top{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.avatar-small{
+width:28px;
+height:28px;
+border-radius:50%;
+background:#DCE8DD;
+color:#356C54;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:10px;
+font-weight:600;
+}
+
+.profile-top strong{
+display:block;
+font-size:11px;
+}
+
+.profile-top small{
+display:block;
+font-size:9px;
+color:#949B95;
+}
+
+/* CONTENT */
+
+.content{
+width:840px;
+margin:auto;
+padding:30px 0;
+}
+
+.page-title{
+font-size:18px;
+font-weight:700;
+margin-bottom:8px;
+}
+.subtitle{
+font-size:12px;
+color:#8B918C;
+margin-bottom:18px;
+}
+
+/* HERO */
+
+.hero{
+background:#EAF1EB;
+border-radius:18px;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.hero-left{
+display:flex;
+align-items:center;
+gap:16px;
+}
+
+.hero-avatar{
+width:56px;
+height:56px;
+border-radius:50%;
+background:#DDE8DD;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:18px;
+font-weight:700;
+color:#356C54;
+}
+.hero h2{
+font-size:16px;
+margin-bottom:5px;
+}
+
+.hero p{
+font-size:11px;
+color:#6C746D;
+margin-bottom:6px;
+}
+
+.change-photo{
+height:32px;
+padding:0 14px;
+border:1px solid #D8DDD8;
+background:white;
+border-radius:8px;
+cursor:pointer;
+font-size:11px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:580px 220px;
+gap:18px;
+}
+
+.card{
+background:white;
+border:1px solid #E3E7E2;
+border-radius:16px;
+padding:18px;
+}
+.card-title{
+font-size:14px;
+font-weight:600;
+margin-bottom:6px;
+}
+
+.card-subtitle{
+font-size:11px;
+color:#8A908B;
+margin-bottom:18px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+label{
+display:block;
+font-size:11px;
+font-weight:600;
+margin-bottom:8px;
+}
+
+input,
+select{
+width:100%;
+height:34px;
+border:1px solid #DCE2DD;
+border-radius:6px;
+padding:0 10px;
+font-size:12px;
+}
+textarea{
+width:100%;
+height:72px;
+border:1px solid #DCE2DD;
+border-radius:6px;
+padding:12px;
+resize:none;
+font-size:12px;
+line-height:1.6;
+}
+
+.counter{
+font-size:10px;
+color:#9A9F9B;
+margin-top:6px;
+}
+
+.note{
+margin-top:14px;
+font-size:11px;
+color:#6E766F;
+display:flex;
+gap:8px;
+align-items:center;
+}
+
+.divider{
+margin:18px 0;
+border:none;
+border-top:1px solid #ECECEC;
+}
+
+.actions{
+display:flex;
+justify-content:flex-end;
+gap:8px;
+}
+
+.cancel-btn{
+height:32px;
+padding:0 14px;
+border:1px solid #DCE2DD;
+background:white;
+border-radius:6px;
+font-size:11px;
+cursor:pointer;
+}
+.save-btn{
+height:32px;
+padding:0 16px;
+background:#356C54;
+border:none;
+border-radius:6px;
+color:white;
+font-size:11px;
+font-weight:600;
+cursor:pointer;
+}
+
+/* SIDE */
+
+.side-card{
+background:white;
+border:1px solid #E3E7E2;
+border-radius:16px;
+padding:16px;
+margin-bottom:14px;
+}
+
+.side-card h3{
+font-size:14px;
+margin-bottom:10px;
+}
+
+.badge{
+display:inline-block;
+background:#EDF3EE;
+padding:5px 8px;
+border-radius:6px;
+font-size:9px;
+margin-bottom:14px;
+color:#356C54;
+}
+
+.detail-label{
+font-size:10px;
+color:#A0A5A0;
+margin-top:10px;
+}
+
+.detail-value{
+font-size:12px;
+margin-top:4px;
+}
+.update-link{
+display:inline-block;
+margin-top:16px;
+font-size:11px;
+color:#356C54;
+text-decoration:none;
+font-weight:600;
+}
+
+.notice{
+background:#F4EFE2;
+border-radius:16px;
+padding:16px;
+}
+
+.notice h3{
+font-size:14px;
+margin-bottom:12px;
+}
+
+.notice p{
+font-size:11px;
+line-height:1.6;
+color:#6D736E;
+}
+
+.notice a{
+display:inline-block;
+margin-top:12px;
+font-size:11px;
+color:#356C54;
+text-decoration:none;
+font-weight:600;
+}
+
+.password-card{
+margin-top:14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.change-password{
+height:32px;
+padding:0 14px;
+background:white;
+border:1px solid #DCE2DD;
+border-radius:6px;
+cursor:pointer;
+font-size:11px;
+}
+.user-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<aside class="sidebar">
+
+<div
+class="logo"
+style="cursor:pointer;"
+onclick="window.location.href='dashboard.html'">
+
+<div class="logo-icon">
+<i class="fas fa-user-group"></i>
+</div>
+
+<div>
+<strong>PLMUN</strong>
+<strong>Barkada Hub</strong>
+</div>
+</div>
+
+<div class="community">
+YOUR COMMUNITY
+</div>
+
+<div class="menu">
+
+<a href="dashboard.html">
+<i class="fas fa-home"></i>
+Home
+</a>
+
+<a href="discussions.html">
+<i class="far fa-comments"></i>
+Discussions
+</a>
+
+<a href="resources.html">
+<i class="far fa-bookmark"></i>
+Wellness resources
+</a>
+
+<a href="profile.html" class="active">
+<i class="far fa-user"></i>
+My profile
+</a>
+
+</div>
+
+<div class="voice-card">
+<h4>Your voice belongs here.</h4>
+<p>A small thought can start a meaningful conversation.</p>
+
+<button onclick="window.location.href='create-discussion.html'">
++ Share a thought
+</button>
+</div>
+<div class="sidebar-footer">
+<a href="#" onclick="showGuidelines()">
+Community guidelines
+</a>
+<a href="#" onclick="logout()">Sign out</a>
+</div>
+
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+
+<div class="quote">
+A little connection goes a long way.
+</div>
+
+<div class="profile-top">
+
+<div
+class="avatar-small"
+id="avatar">
+U
+</div>
+
+<div>
+<strong id="studentName">
+Student
+</strong>
+<small>PLMUN student</small>
+</div>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<h1 class="page-title">
+Your space in the barkada.
+</h1>
+
+<p class="subtitle">
+Choose how you show up, and keep your account details up to date.
+</p>
+
+<div class="hero">
+
+<div class="hero-left">
+
+<div
+class="hero-avatar"
+id="heroAvatar">
+MS
+</div>
+<div>
+
+<h2 id="heroName">
+Student
+</h2>
+
+<p>
+PLMUN student · 3rd year
+</p>
+
+<p>
+Showing up, one day at a time.
+</p>
+
+</div>
+
+</div>
+
+<input
+type="file"
+id="photoInput"
+accept="image/*"
+style="display:none;"
+onchange="changePhoto()">
+
+<button
+class="change-photo"
+onclick="document.getElementById('photoInput').click()">
+    Change photo
+</button>
+
+</div>
+
+<div class="grid">
+
+<div>
+
+<div class="card">
+
+<div class="card-title">
+Public profile
+</div>
+
+<div class="card-subtitle">
+These details can be seen by other students when you use your name.
+</div>
+
+<div class="row">
+
+<div>
+
+<label>Display name</label>
+
+<input
+id="displayName"
+value="Mika Santos">
+</div>
+
+<div>
+
+<label>Year level · optional</label>
+
+<select id="yearLevel">
+<option>1st year</option>
+<option>2nd year</option>
+<option selected>3rd year</option>
+<option>4th year</option>
+</select>
+
+</div>
+
+</div>
+
+<label style="margin-top:16px;">
+A little about you · optional
+</label>
+
+<textarea id="bio">
+</textarea>
+<div class="counter" id="bioCounter">
+0 / 200 characters
+</div>
+
+
+<div class="note">
+<i class="fa-regular fa-eye"></i>
+Anonymous posts won't link to your public profile.
+</div>
+
+<hr class="divider">
+
+<div class="actions">
+
+<button
+type="button"
+class="cancel-btn"
+onclick="location.reload()">
+Cancel
+</button>
+
+<button
+class="save-btn"
+onclick="saveProfile()">
+<i class="fa-solid fa-check"></i>
+Save changes
+</button>
+
+</div>
+
+</div>
+
+<div class="card password-card">
+
+<div>
+
+<div class="card-title">
+Password & security
+</div>
+
+<div class="card-subtitle">
+Use a unique password to help protect your account.
+</div>
+
+</div>
+
+<button
+class="change-password"
+onclick="changePassword()">
+Change password
+</button>
+
+<script>
+
+const currentUser =
+JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+if(
+    !currentUser ||
+    currentUser.role === "admin"
+){
+    window.location.href =
+    "login.html";
+}
+
+/* PROFILE INFO */
+
+document.getElementById("studentName").innerText =
+currentUser.fullname;
+
+document.getElementById("heroName").innerText =
+currentUser.fullname;
+
+const initials =
+currentUser.fullname
+.split(" ")
+.map(name => name.charAt(0))
+.join("")
+.substring(0,2);
+
+/* PHOTO OR INITIALS */
+
+if(currentUser.photo){
+
+    document.getElementById("avatar").innerHTML =
+    `<img src="${currentUser.photo}" class="user-photo">`;
+
+    document.getElementById("heroAvatar").innerHTML =
+    `<img src="${currentUser.photo}" class="user-photo">`;
+
+}else{
+
+    document.getElementById("avatar").innerText =
+    initials;
+
+    document.getElementById("heroAvatar").innerText =
+    initials;
+
+}
+
+/* PROFILE DATA */
+
+document.getElementById("displayName").value =
+currentUser.fullname;
+
+document.getElementById("yearLevel").value =
+currentUser.yearlevel || "1st year";
+
+if(currentUser.bio){
+
+    document.getElementById("bio").value =
+    currentUser.bio;
+
+}
+
+document.getElementById("privateName").innerText =
+currentUser.fullname;
+
+document.getElementById("privateEmail").innerText =
+currentUser.email;
+
+document.getElementById("privateStudentNo").innerText =
+currentUser.studentno;
+
+/* SAVE PROFILE */
+
+function saveProfile(){
+
+    currentUser.fullname =
+    document.getElementById("displayName").value;
+
+    currentUser.yearlevel =
+    document.getElementById("yearLevel").value;
+
+    currentUser.bio =
+    document.getElementById("bio").value;
+
+    localStorage.setItem(
+        currentUser.email,
+        JSON.stringify(currentUser)
+    );
+
+    localStorage.setItem(
+        "currentUser",
+        JSON.stringify(currentUser)
+    );
+
+    alert(
+    "Profile updated successfully!"
+    );
+
+    location.reload();
+
+}
+
+/* CHANGE PASSWORD */
+
+function changePassword(){
+
+    const newPassword =
+    prompt(
+    "Enter new password:"
+    );
+
+    if(
+        !newPassword ||
+        newPassword.length < 8
+    ){
+
+        alert(
+        "Password must be at least 8 characters."
+        );
+
+        return;
+    }
+
+    currentUser.password =
+    newPassword;
+
+    localStorage.setItem(
+        currentUser.email,
+        JSON.stringify(currentUser)
+    );
+
+    localStorage.setItem(
+        "currentUser",
+        JSON.stringify(currentUser)
+    );
+
+    alert(
+    "Password updated successfully!"
+    );
+
+}
+
+/* CHANGE PHOTO */
+
+function changePhoto(){
+
+    const file =
+    document.getElementById(
+    "photoInput"
+    ).files[0];
+
+    if(!file){
+        return;
+    }
+
+    const reader =
+    new FileReader();
+
+    reader.onload = function(e){
+
+        const imageData =
+        e.target.result;
+
+        currentUser.photo =
+        imageData;
+
+        localStorage.setItem(
+            currentUser.email,
+            JSON.stringify(currentUser)
+        );
+
+        localStorage.setItem(
+            "currentUser",
+            JSON.stringify(currentUser)
+        );
+
+        document.getElementById("avatar").innerHTML =
+        `<img src="${imageData}" class="user-photo">`;
+
+        document.getElementById("heroAvatar").innerHTML =
+        `<img src="${imageData}" class="user-photo">`;
+
+        alert(
+        "Profile photo updated successfully!"
+        );
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+
+/* BIO COUNTER */
+
+const bio =
+document.getElementById("bio");
+
+const counter =
+document.getElementById("bioCounter");
+
+function updateCounter(){
+
+    counter.innerText =
+    bio.value.length +
+    " / 200 characters";
+
+}
+
+bio.addEventListener(
+    "input",
+    updateCounter
+);
+
+updateCounter();
+
+/* COMMUNITY GUIDELINES */
+
+function showGuidelines(){
+
+    alert(`
+BARKADA HUB GUIDELINES
+
+• Respect privacy
+• Be supportive
+• No bullying
+• No harassment
+• No hate speech
+• Report unsafe content
+    `);
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+    if(
+    confirm(
+    "Are you sure you want to sign out?"
+    )){
+
+        localStorage.removeItem(
+        "currentUser"
+        );
+
+        window.location.replace(
+        "login.html"
+        );
+
+    }
+
+}
+
+</script>
+
+
+</div>
+
+</div>
+
+<div>
+
+<div class="side-card">
+
+<h3>
+Private account details
+</h3>
+
+<div class="badge">
+ONLY YOU & AUTHORIZED ADMINS
+</div>
+
+<div class="detail-label">
+Full name
+</div>
+
+<div
+class="detail-value"
+id="privateName">
+Student
+</div>
+
+<div class="detail-label">
+Email address
+</div>
+
+<div
+class="detail-value"
+id="privateEmail">
+Email
+</div>
+
+<div class="detail-label">
+Student number
+</div>
+
+<div
+class="detail-value"
+id="privateStudentNo">
+Student No.
+</div>
+
+<a href="#" class="update-link">
+Update account details →
+</a>
+
+</div>
+
+<div class="notice">
+
+<h3>
+Share what feels right.
+</h3>
+
+<p>
+Your bio and photo are optional.
+Avoid sharing your phone number,
+address, or other sensitive information.
+</p>
+
+<a href="#">
+Read the privacy notice →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+</html>

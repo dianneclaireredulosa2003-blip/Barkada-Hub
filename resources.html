@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barkada Hub - Wellness Resources</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#F5F6F2;
+    color:#30493D;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+/* SIDEBAR */
+
+.sidebar{
+    width:150px;
+    background:#fff;
+    border-right:1px solid #E5E7E2;
+    padding:14px;
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:28px;
+}
+
+.logo-icon{
+    width:28px;
+    height:28px;
+    border-radius:8px;
+    background:#356C54;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.logo small{
+    display:block;
+    font-size:7px;
+    color:#748074;
+    letter-spacing:1px;
+}
+
+.logo strong{
+    display:block;
+    font-size:14px;
+    color:#274234;
+}
+
+.community{
+    font-size:8px;
+    letter-spacing:1px;
+    color:#98A09B;
+    margin-bottom:12px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:#707670;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:5px;
+    font-size:11px;
+}
+.menu a.active{
+    background:#EAF1EB;
+    color:#356C54;
+    font-weight:600;
+}
+
+.voice-card{
+    margin-top:18px;
+    background:#EDF3EE;
+    border-radius:12px;
+    padding:12px;
+}
+
+.voice-card h4{
+    font-size:12px;
+    margin:8px 0;
+    color:#2F4A3B;
+}
+
+.voice-card p{
+    font-size:10px;
+    color:#7C837E;
+    line-height:1.5;
+    margin-bottom:10px;
+}
+
+.voice-card button{
+    width:100%;
+    height:32px;
+    border:none;
+    background:#356C54;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:11px;
+}
+
+.sidebar-footer{
+    margin-top:auto;
+    border-top:1px solid #ECECEC;
+    padding-top:12px;
+}
+
+.sidebar-footer a{
+    display:block;
+    text-decoration:none;
+    color:#8E938F;
+    font-size:10px;
+    margin-top:10px;
+}
+
+/* MAIN */
+.main{
+    flex:1;
+}
+
+.topbar{
+    height:54px;
+    background:white;
+    border-bottom:1px solid #E6E8E4;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 26px;
+}
+
+.quote{
+    font-size:11px;
+    color:#7C827D;
+}
+
+.profile{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.avatar{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#DCE7DC;
+    color:#356C54;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:10px;
+    font-weight:600;
+}
+
+.profile strong{
+    display:block;
+    font-size:11px;
+}
+
+.profile small{
+    display:block;
+    font-size:9px;
+    color:#949C96;
+}
+
+/* CONTENT */
+
+.content{
+    width:780px;
+    margin:0 auto;
+    padding:30px 0;
+}
+
+.page-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    font-size:12px;
+    color:#8B918C;
+    margin-bottom:20px;
+}
+/* HERO */
+
+.hero-card{
+    background:#EAF1EB;
+    border-radius:18px;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.hero-left{
+    max-width:430px;
+}
+
+.hero-label{
+    font-size:10px;
+    color:#6A766E;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.hero-title{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.hero-text{
+    font-size:12px;
+    color:#5F6762;
+    line-height:1.7;
+    margin-bottom:16px;
+}
+
+.hero-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.hero-btn{
+    background:#356C54;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px 16px;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:600;
+}
+.hero-image img{
+    width:220px;
+    height:120px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* FILTERS */
+
+.filters-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.filters{
+    display:flex;
+    gap:8px;
+}
+
+.filter{
+    border:1px solid #DCE1DD;
+    background:white;
+    color:#767C77;
+    padding:7px 12px;
+    border-radius:16px;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.filter.active{
+    background:#356C54;
+    color:white;
+    border:none;
+}
+
+.search-box{
+    width:180px;
+    height:32px;
+    background:white;
+    border:1px solid #DCE1DD;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+    width:100%;
+    background:transparent;
+    font-size:11px;
+}
+
+/* SECTION TITLE */
+.section-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.section-row h2{
+    font-size:14px;
+}
+
+.section-row span{
+    font-size:10px;
+    color:#8A918C;
+}
+
+/* GRID */
+
+.resource-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.resource-card{
+    background:white;
+    border:1px solid #E4E7E3;
+    border-radius:16px;
+    padding:14px;
+    min-height:154px;
+    transition:0.2s;
+}
+.resource-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 12px rgba(0,0,0,0.08);
+}
+
+.resource-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.resource-icon{
+    width:28px;
+    height:28px;
+    border-radius:8px;
+    background:#EEF3EE;
+    color:#356C54;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.badge{
+    background:#F1F4F1;
+    color:#889089;
+    padding:4px 8px;
+    border-radius:6px;
+    font-size:9px;
+}
+.resource-card h3{
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.resource-card p{
+    font-size:11px;
+    color:#6E746F;
+    line-height:1.6;
+    margin-bottom:16px;
+}
+
+.resource-footer{
+    margin-top:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:10px;
+    color:#8D948E;
+}
+
+/* FOOTER NOTE */
+
+.footer-note{
+    margin-top:18px;
+    font-size:10px;
+    color:#8C938E;
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+}
+.user-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+  <div
+class="logo"
+style="cursor:pointer;"
+onclick="window.location.href='dashboard.html'">
+
+
+            <div class="logo-icon">
+                <i class="fas fa-user-group"></i>
+            </div>
+
+            <div>
+                <strong>PLMUN</strong>
+                <strong>Barkada Hub</strong>
+            </div>
+        </div>
+     <div class="community">
+            YOUR COMMUNITY
+        </div>
+
+        <div class="menu">
+
+            <a href="dashboard.html">
+<i class="fas fa-home"></i>
+Home
+</a>
+
+            <a href="discussions.html">
+                <i class="far fa-comments"></i>
+                Discussions
+            </a>
+
+        <a href="resources.html" class="active">
+<i class="far fa-bookmark"></i>
+Wellness resources
+</a>
+
+            <a href="profile.html">
+<i class="far fa-user"></i>
+My profile
+</a>
+
+        </div>
+
+        <div class="voice-card">
+
+            <i class="fas fa-leaf"></i>
+
+            <h4>Your voice belongs here.</h4>
+
+            <p>
+                A small thought can start a meaningful conversation.
+            </p>
+
+            <button onclick="window.location.href='create-discussion.html'">
+    + Share a thought
+</button>
+           </div>
+
+        <div class="sidebar-footer">
+          <a href="#" onclick="showGuidelines()">
+Community guidelines
+</a>
+            <a href="#" onclick="logout()">Sign out</a>
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div class="quote">
+                A little connection goes a long way.
+            </div>
+
+            <div class="profile">
+
+                <div
+class="avatar"
+id="avatar"
+style="cursor:pointer;"
+onclick="window.location.href='profile.html'">
+    U
+</div>
+<div
+style="cursor:pointer;"
+onclick="window.location.href='profile.html'">
+
+<strong id="studentName">
+    Student
+</strong>
+                    <small>PLMUN student</small>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <h1 class="page-title">
+                A little knowledge. A little breathing room.
+            </h1>
+
+            <p class="subtitle">
+                Approachable resources for student life, self-care, and supporting one another.
+            </p>
+
+            <div class="hero-card">
+
+                <div class="hero-left">
+
+                    <div class="hero-label">
+                        A GOOD PLACE TO START
+                    </div>
+
+                    <div class="hero-title">
+                        When school feels like a lot
+                    </div>
+      <div class="hero-text">
+                        A gentle guide to noticing your limits,
+                        breaking up big tasks, and knowing you don't have
+                        to do it all on your own.
+                    </div>
+
+                    <div class="hero-actions">
+
+                        <button
+class="hero-btn"
+onclick="openResource('When school feels like a lot')">
+                            <i class="fas fa-arrow-right"></i>
+                            Read the guide
+                        </button>
+
+                        <span class="hero-meta">
+                            Guide • 5 min read
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+                  
+                </div>
+
+            </div>
+
+            <div class="filters-row">
+
+                <div class="filters">
+
+                    <button class="filter active">
+                        All resources
+                    </button>
+
+                    <button class="filter">
+                        Stress & studies
+                    </button>
+
+                    <button class="filter">
+                        Self-care
+                    </button>
+
+                    <button class="filter">
+                        Connections
+                    </button>
+
+                </div>
+
+                <div class="search-box">
+                    <i class="fas fa-search"></i>&nbsp;
+                    <input
+id="searchResource"
+type="text"
+placeholder="Search resources">
+                </div>
+
+            </div>
+       <div class="section-row">
+                <h2>Explore at your own pace</h2>
+                <span>6 resources</span>
+            </div>
+
+            <div class="resource-grid">
+
+                <div class="resource-card"
+onclick="openResource('A gentler study break')"
+style="cursor:pointer;">
+
+                    <h3>A gentler study break</h3>
+
+                    <p>
+                        Small ways to pause, recharge,
+                        and come back without the guilt.
+                    </p>
+
+                    <div class="resource-footer">
+                        <span>Article • 5 min read</span>
+                        ↗
+                    </div>
+                </div>
+
+                <div class="resource-card"
+onclick="openResource('Understanding everyday stress')"
+style="cursor:pointer;">
+
+                    <h3>Understanding everyday stress</h3>
+
+                    <p>
+                        Recognize common stress responses
+                        and when to reach out for support.
+                    </p>
+
+                    <div class="resource-footer">
+                        <span>Guide • 6 min read</span>
+                        ↗
+                    </div>
+                </div>
+
+                <div class="resource-card"
+onclick="openResource('How to listen to a friend')"
+style="cursor:pointer;">
+
+                    <h3>How to listen to a friend</h3>
+
+                    <p>
+                        Supportive words, thoughtful questions,
+                        and healthy boundaries.
+                    </p>
+                   <div class="resource-footer">
+                        <span>Guide • 4 min read</span>
+                        ↗
+                    </div>
+                </div>
+
+                <div class="resource-card"
+onclick="openResource('Taking things one task at a time')"
+style="cursor:pointer;">
+
+                    <h3>Taking things one task at a time</h3>
+
+                    <p>
+                        A practical way to make a busy school
+                        week feel more manageable.
+                    </p>
+
+                    <div class="resource-footer">
+                        <span>Article • 4 min read</span>
+                        ↗
+                    </div>
+                </div>
+
+               <div class="resource-card"
+onclick="openResource('Rest is part of the process')"
+style="cursor:pointer;">
+
+    <h3>
+        Rest is part of the process
+    </h3>
+
+    <p>
+        Build a wind-down routine that
+        makes room for a little more rest.
+    </p>
+
+    <div class="resource-footer">
+        <span>Article • 5 min read</span>
+        ↗
+    </div>
+
+</div>
+      <div class="resource-card"
+onclick="openResource('Asking for support')"
+style="cursor:pointer;">
+
+                    <h3>Asking for support</h3>
+
+                    <p>
+                        Start a conversation with someone
+                        you trust, at your own pace.
+                    </p>
+
+                    <div class="resource-footer">
+                        <span>Guide • 3 min read</span>
+                        ↗
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-note">
+                <i class="fas fa-info-circle"></i>
+                <span>
+                    For education and reflection, not diagnosis or a substitute for professional advice.
+                    Reach out to a qualified professional when you need more support.
+                </span>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+<script>
+
+const currentUser =
+JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+if(
+!currentUser ||
+currentUser.role === "admin"
+){
+    window.location.href =
+    "login.html";
+}
+
+/* USER INFO */
+
+document.getElementById("studentName").innerText =
+currentUser.fullname;
+
+const initials =
+currentUser.fullname
+.split(" ")
+.map(name => name.charAt(0))
+.join("")
+.substring(0,2);
+
+if(currentUser.photo){
+
+    document.getElementById("avatar")
+    .innerHTML =
+    `<img src="${currentUser.photo}" class="user-photo">`;
+
+}else{
+
+    document.getElementById("avatar").innerText =
+    initials;
+
+}
+
+/* SEARCH RESOURCES */
+
+document
+.getElementById("searchResource")
+.addEventListener(
+"keyup",
+function(){
+
+    const search =
+    this.value.toLowerCase();
+
+    document
+    .querySelectorAll(".resource-card")
+    .forEach(card => {
+
+        const text =
+        card.innerText.toLowerCase();
+
+        card.style.display =
+        text.includes(search)
+        ? "block"
+        : "none";
+
+    });
+
+});
+
+/* RESOURCE OPEN */
+
+function openResource(title){
+
+    localStorage.setItem(
+        "selectedResource",
+        title
+    );
+
+    alert(
+        title +
+        "\n\nThis resource will be available in the full system version."
+    );
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+    if(
+    confirm(
+    "Are you sure you want to sign out?"
+    )){
+
+        localStorage.removeItem(
+        "currentUser"
+        );
+
+        window.location.replace(
+        "login.html"
+        );
+
+    }
+
+}
+
+/* COMMUNITY GUIDELINES */
+
+function showGuidelines(){
+
+    alert(`
+BARKADA HUB GUIDELINES
+
+• Respect privacy
+• Be supportive
+• No bullying
+• No harassment
+• No hate speech
+• Report unsafe content
+    `);
+
+}
+
+</script>
+</body>
+</html>
+                                  

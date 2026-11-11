@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barkada Hub Admin Workspace</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#F5F6F2;
+    color:#30493D;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:160px;
+    background:white;
+    border-right:1px solid #E5E8E3;
+    padding:14px;
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-bottom:28px;
+}
+
+.logo-icon{
+    width:28px;
+    height:28px;
+    border-radius:8px;
+    background:#356C54;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.logo small{
+    display:block;
+    font-size:7px;
+    color:#798479;
+    letter-spacing:1px;
+}
+
+.logo strong{
+    display:block;
+    font-size:14px;
+}
+.logo span{
+    display:block;
+    font-size:9px;
+    color:#9AA09B;
+    margin-top:2px;
+}
+
+.section-title{
+    font-size:8px;
+    color:#98A09B;
+    letter-spacing:1px;
+    margin-bottom:12px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px;
+    text-decoration:none;
+    color:#6F756F;
+    font-size:11px;
+    border-radius:8px;
+    margin-bottom:4px;
+}
+
+.menu a.active{
+    background:#EAF1EB;
+    color:#356C54;
+    font-weight:600;
+}
+
+.moderation-box{
+    margin-top:18px;
+    padding:14px;
+    background:#EDF3EE;
+    border-radius:12px;
+}
+
+.moderation-box h4{
+    font-size:12px;
+    margin-bottom:8px;
+}
+
+.moderation-box p{
+    font-size:10px;
+    line-height:1.5;
+    color:#7E857F;
+}
+
+.sidebar-footer{
+    margin-top:auto;
+    border-top:1px solid #ECECEC;
+    padding-top:10px;
+}
+
+.sidebar-footer a{
+    display:block;
+    text-decoration:none;
+    color:#929892;
+    font-size:10px;
+    margin-top:10px;
+}
+
+/* MAIN */
+
+.main{
+    flex:1;
+}
+.topbar{
+    height:58px;
+    background:white;
+    border-bottom:1px solid #E5E8E3;
+    padding:0 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.topbar-left{
+    font-size:11px;
+    color:#79817C;
+}
+
+.admin-profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.admin-avatar{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#DCE7DC;
+    color:#356C54;
+    font-weight:600;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:10px;
+}
+
+.admin-info strong{
+    display:block;
+    font-size:11px;
+}
+
+.admin-info small{
+    display:block;
+    font-size:9px;
+    color:#98A09A;
+}
+
+/* PAGE */
+
+.content{
+    width:820px;
+    margin:auto;
+    padding:30px 0;
+}
+.page-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    font-size:12px;
+    color:#8D938F;
+    margin-bottom:20px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-bottom:20px;
+}
+
+.stat-card{
+    background:white;
+    border:1px solid #E3E7E2;
+    border-radius:16px;
+    padding:16px;
+}
+
+.stat-title{
+    font-size:11px;
+    color:#7F857F;
+    margin-bottom:10px;
+}
+
+.stat-number{
+    font-size:18px;
+    font-weight:700;
+}
+.stat-desc{
+    font-size:10px;
+    color:#9AA09B;
+    margin-top:3px;
+}
+
+/* GRID */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:520px 260px;
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border:1px solid #E3E7E2;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:16px;
+}
+
+.card-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.card-head h2{
+    font-size:14px;
+}
+
+.card-head a{
+    text-decoration:none;
+    color:#356C54;
+    font-size:11px;
+    font-weight:600;
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:14px;
+}
+.tab{
+    font-size:10px;
+    padding:5px 8px;
+    border-radius:6px;
+    background:#F1F4F1;
+}
+
+.tab.active{
+    background:#EAF1EB;
+    color:#356C54;
+}
+
+/* TABLE */
+
+.report-row{
+    display:grid;
+    grid-template-columns:1fr 90px 80px;
+    padding:14px 0;
+    border-top:1px solid #EDF0EC;
+    font-size:11px;
+}
+
+.report-row:first-of-type{
+    border-top:none;
+}
+
+.reason{
+    font-size:9px;
+    color:#9BA19C;
+    margin-top:4px;
+}
+
+.status-open{
+    color:#356C54;
+    font-weight:600;
+}
+
+.status-review{
+    color:#7B7E7B;
+    font-weight:600;
+}
+
+.footer-note{
+    margin-top:12px;
+    font-size:10px;
+    color:#9AA09B;
+}
+/* REVIEW PANEL */
+
+.review-panel h2{
+    font-size:14px;
+    margin-bottom:16px;
+}
+
+.review-tag{
+    display:inline-block;
+    background:#F6E8D7;
+    color:#A87435;
+    padding:5px 8px;
+    border-radius:6px;
+    font-size:9px;
+    margin-bottom:12px;
+}
+
+.review-label{
+    font-size:9px;
+    color:#9BA19C;
+    margin-bottom:8px;
+}
+
+.review-link{
+    display:inline-block;
+    margin-top:8px;
+    color:#356C54;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:600;
+}
+
+.quote-box{
+    background:#F2F4F1;
+    border-radius:8px;
+    padding:12px;
+    margin:14px 0;
+    font-size:11px;
+    color:#606661;
+    line-height:1.6;
+}
+
+.review-panel textarea{
+    width:100%;
+    height:50px;
+    border:1px solid #DDE2DD;
+    border-radius:6px;
+    padding:10px;
+    resize:none;
+    margin-top:8px;
+}
+.panel-actions{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+}
+
+.keep-btn{
+    flex:1;
+    height:30px;
+    border:1px solid #D4DAD5;
+    background:white;
+    border-radius:6px;
+    color:#356C54;
+    cursor:pointer;
+    font-size:11px;
+}
+
+.remove-btn{
+    flex:1;
+    height:30px;
+    border:none;
+    background:#F7E4E0;
+    color:#BB5A45;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:11px;
+}
+
+/* ANNOUNCEMENTS */
+
+.announcement-title{
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:4px;
+}
+
+.announcement-meta{
+    font-size:10px;
+    color:#98A09A;
+    margin-bottom:10px;
+}
+
+.actions-row{
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+}
+
+.green-btn{
+    background:#356C54;
+    color:white;
+    border:none;
+    border-radius:6px;
+    padding:10px 14px;
+    cursor:pointer;
+    font-size:11px;
+}
+.outline-btn{
+    background:white;
+    border:1px solid #DCE1DD;
+    border-radius:6px;
+    padding:10px 14px;
+    cursor:pointer;
+    font-size:11px;
+    color:#356C54;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fas fa-user-group"></i>
+            </div>
+
+            <div>
+                <strong>PLMUN</strong>
+                <strong>Barkada Hub</strong>
+                <span>ADMIN WORKSPACE</span>
+            </div>
+
+        </div>
+
+        <div class="section-title">
+            MANAGE THE COMMUNITY
+        </div>
+
+        <div class="menu">
+
+            <a href="#" class="active">
+               
+               <b>Content overview</b>
+            </a>
+            <a href="#">
+                
+                <b>Reported content</b>
+            </a>
+
+            <a href="#">
+                
+              <b>Announcements</b>
+            </a>
+
+            <a href="#">
+                
+                <b>Resources</b>
+            </a>
+
+        </div>
+
+        <div class="moderation-box">
+
+            <h4>Careful by design</h4>
+
+            <p>
+                Moderation tools are separate from
+                student spaces.
+            </p>
+
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="#">Community guidelines</a>
+            <a href="#" onclick="logout()">
+Sign out
+</a>
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+                Community care, behind the scenes
+            </div>
+         <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    AD
+                </div>
+
+                <div class="admin-info">
+                    <strong>Administrator</strong>
+                    <small>Content moderator</small>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <h1 class="page-title">
+                A thoughtful eye on the community.
+            </h1>
+
+            <p class="subtitle">
+                Review concerns with care and keep community content helpful and up to date.
+            </p>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-title">Reports to review</div>
+                    <div class="stat-number">4</div>
+                    <div class="stat-desc">Awaiting a decision</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-title">Live announcements</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-desc">Visible to students</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-title">Published resources</div>
+                    <div class="stat-number">7</div>
+                    <div class="stat-desc">In the wellness library</div>
+                </div>
+        </div>
+
+            <div class="dashboard-grid">
+
+                <!-- LEFT -->
+
+                <div>
+
+                    <div class="card">
+
+                        <div class="card-head">
+
+                            <h2>Reported content</h2>
+
+                            <a href="#">
+                                View all reports →
+                            </a>
+
+                        </div>
+
+                        <div class="tabs">
+                            <div class="tab active">
+                                Needs review · 4
+                            </div>
+
+                            <div class="tab">
+                                Reviewed
+                            </div>
+                        </div>
+
+                        <div class="report-row">
+
+                            <div>
+                                <strong>
+                                    Reply in “Anyone else feeling overwhelmed...”
+                                </strong>
+
+                                <div class="reason">
+                                    Peer reply · Unkind or dismissive
+                                </div>
+                            </div>
+                        <div>
+                                12 min ago
+                            </div>
+
+                            <div class="status-open">
+                                Opened
+                            </div>
+
+                        </div>
+
+                        <div class="report-row">
+
+                            <div>
+                                <strong>
+                                    “Join our off-campus group chat”
+                                </strong>
+
+                                <div class="reason">
+                                    Discussion · Personal information
+                                </div>
+                            </div>
+
+                            <div>
+                                49 min ago
+                            </div>
+
+                            <div class="status-review">
+                                Review
+                            </div>
+
+                        </div>
+
+                        <div class="report-row">
+
+                            <div>
+                                <strong>
+                                    Reply in “Making friends when you're quiet”
+                                </strong>
+
+                                <div class="reason">
+                                    Peer reply · Harassment concern
+                                </div>
+                            </div>
+
+                            <div>
+                                1 hour ago
+                            </div>
+
+                            <div class="status-review">
+                                Review
+                            </div>
+
+                        </div>
+
+                   <div class="footer-note">
+                            Showing 3 of 4 reports · Oldest concerns are reviewed with care.
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+
+                        <div class="card-head">
+                            <h2>Announcements & resources</h2>
+                            <i class="far fa-pen-to-square"></i>
+                        </div>
+
+                        <div class="announcement-title">
+                            A warm welcome to our new barkada
+                        </div>
+
+                        <div class="announcement-meta">
+                            Announcement · Published Nov 7, 2026
+                        </div>
+
+                        <div class="actions-row">
+
+                            <button class="green-btn">
+                                + New announcement
+                            </button>
+
+                            <button class="outline-btn">
+                                Manage resources
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT -->
+      <div>
+
+                    <div class="card review-panel">
+
+                        <h2>Review report</h2>
+
+                        <div class="review-tag">
+                            Needs review
+                        </div>
+
+                        <div class="review-label">
+                            REPORTED REPLY · ACADEMIC LIFE
+                        </div>
+
+                        <strong>
+                            Anyone else feeling overwhelmed by deadlines?
+                        </strong>
+
+                        <a href="#" class="review-link">
+                            View conversation →
+                        </a>
+
+                        <div class="quote-box">
+                            “You're overreacting. Everyone has deadlines. Just deal with it.”
+                        </div>
+
+                        <div class="review-label">
+                            Reason: Unkind or dismissive
+                        </div>
+
+                        <p style="font-size:11px;color:#6e746f;margin-top:4px;">
+                            Review in context. Disagreement alone is not a reason to remove content.
+                        </p>
+
+                        <div class="review-label" style="margin-top:14px;">
+                            Internal note
+                        </div>
+
+                        <textarea placeholder="Add the reason for your decision..."></textarea>
+
+                        <div class="panel-actions">
+
+                            <button class="keep-btn">
+                                Keep content
+                            </button>
+
+                            <button class="remove-btn">
+                                Remove reply
+                            </button>
+
+                        </div>
+                         </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+const currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+if(
+    !currentUser ||
+    currentUser.role !== "admin"
+){
+
+    window.location.href =
+    "login.html";
+
+}
+function logout(){
+
+    localStorage.removeItem(
+        "currentUser"
+    );
+
+    window.location.href =
+    "login.html";
+
+}
+
+</script>
+
+</body>
+</html>

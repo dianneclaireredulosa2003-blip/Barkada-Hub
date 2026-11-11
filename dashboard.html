@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barkada Hub Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f6f3;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:250px;
+    background:#fff;
+    border-right:1px solid #e6e6e6;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:28px;
+}
+
+.logo-icon{
+    width:32px;
+    height:32px;
+    border-radius:9px;
+    background:#356c54;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.logo-small{
+    font-size:8px;
+    letter-spacing:1px;
+    color:#587060;
+}
+
+.logo-title{
+    font-size:15px;
+    font-weight:700;
+    color:#223f31;
+}
+
+.section-label{
+    font-size:11px;
+    color:#999;
+    margin-bottom:10px;
+    font-weight:600;
+    letter-spacing:.5px;
+}
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:#666;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:8px;
+}
+
+.menu a.active{
+    background:#e8efe8;
+    color:#27503d;
+    font-weight:600;
+}
+
+.menu a:hover{
+    background:#f4f6f4;
+}
+
+.voice-box{
+    margin-top:20px;
+    background:#edf2ed;
+    border-radius:14px;
+    padding:15px;
+}
+
+.voice-box i{
+    color:#356c54;
+}
+
+.voice-box h4{
+    color:#294936;
+    margin:10px 0;
+}
+
+.voice-box p{
+    font-size:12px;
+    color:#777;
+    margin-bottom:15px;
+}
+
+.voice-box button{
+    width:100%;
+    border:none;
+    background:#356c54;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.bottom-links{
+    margin-top:auto;
+}
+
+.bottom-links a{
+    display:block;
+    text-decoration:none;
+    color:#777;
+    margin-top:15px;
+}
+/* TOPBAR */
+
+.topbar{
+    height:70px;
+    background:white;
+    border-bottom:1px solid #e6e6e6;
+    padding:0 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.quote{
+    color:#777;
+    font-size:14px;
+}
+
+.user{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#dbe8dd;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#2f5d46;
+    font-weight:bold;
+}
+
+.user-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.user-info small{
+    color:#888;
+}
+
+/* CONTENT */
+
+.content{
+    padding:30px;
+}
+
+.greeting h1{
+    font-size:22px;
+    color:#30483a;
+}
+
+.greeting p{
+    color:#777;
+    margin-top:5px;
+}
+
+/* HERO */
+
+.hero{
+    margin-top:25px;
+    background:#eaf1ea;
+    border-radius:18px;
+    padding:22px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+     margin:10px 0;
+    line-height:1.2;
+}
+
+.hero p{
+    color:#5f7769;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.btn-primary{
+    background:#356c54;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:11px 16px;
+    cursor:pointer;
+}
+
+.btn-secondary{
+    background:white;
+    color:#2f5d46;
+    border:none;
+    border-radius:8px;
+    padding:11px 16px;
+    cursor:pointer;
+}
+
+.hero img{
+    width:220px;
+    height:140px;
+    object-fit:cover;
+    border-radius:16px;
+}
+
+/* POSTS AREA */
+
+
+.title-row{
+    margin-top:20px;
+    margin-bottom:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.title-row h2{
+    color:#30483a;
+}
+
+.title-row a{
+    color:#356c54;
+    text-decoration:none;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:70% 30%;
+    gap:20px;
+}
+
+.post-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#777;
+    font-size:13px;
+}
+
+.post-avatar{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#dbe8dd;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.post h3{
+    margin:15px 0 10px;
+    color:#30483a;
+}
+
+.post p{
+    color:#777;
+    line-height:1.5;
+}
+
+.tag{
+    display:inline-block;
+    background:#edf3ee;
+    color:#356c54;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    margin-top:12px;
+}
+
+.right-card{
+    background:white;
+    border:1px solid #e7e7e7;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:15px;
+}
+
+.right-card h3{
+    color:#30483a;
+    margin-bottom:15px;
+}
+
+.right-card p{
+    color:#777;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.badge{
+    display:inline-block;
+    background:#e7efe7;
+    color:#356c54;
+    font-size:11px;
+    padding:5px 8px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+.footer-box{
+    margin-top:15px;
+    background:#f0f0ea;
+    border-radius:12px;
+    padding:15px;
+    font-size:13px;
+    color:#666;
+}
+.user-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+ </style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<div
+class="logo"
+onclick="window.location.href='dashboard.html'"
+style="cursor:pointer;">
+<div class="logo-icon">
+<i class="fas fa-user-group"></i>
+</div>
+<h4> PLMUN Barkada Hub</h4>
+</div>
+
+<div class="section-label">
+YOUR COMMUNITY
+</div>
+
+<div class="menu">
+
+<a href="dashboard.html" class="active">
+    <i class="fas fa-house"></i>
+    Home
+</a>
+
+<a href="discussions.html">
+    <i class="far fa-comments"></i>
+    Discussions
+</a>
+
+<a href="resources.html">
+    <i class="far fa-bookmark"></i>
+    Wellness Resources
+</a>
+
+<a href="profile.html">
+    <i class="far fa-user"></i>
+    My Profile
+</a>
+
+</div>
+
+<div class="voice-box">
+<i class="far fa-heart"></i>
+<h4>Your voice belongs here.</h4>
+<p>A small thought can start a meaningful conversation.</p>
+<button onclick="window.location.href='create-discussion.html'">
+    + Share a thought
+</button>
+</div>
+
+<div class="bottom-links">
+<a onclick="showGuidelines()"
+href="#">
+Community Guidelines
+</a>
+<a href="#" class="logout" onclick="logout()">Sign Out</a>
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<div class="quote">
+A little connection goes a long way.
+</div>
+<div class="user">
+
+<div
+class="avatar"
+id="avatar"
+style="cursor:pointer;"
+onclick="window.location.href='profile.html'">
+U
+</div>
+
+<div
+class="user-info"
+style="cursor:pointer;"
+onclick="window.location.href='profile.html'">
+<strong id="studentName">Student</strong>
+<small>PLMUN Student</small>
+</div>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<div class="greeting">
+<h1 id="welcomeText">
+Hi Student, glad you're here.
+</h1>
+
+<p>
+Your campus community, one thoughtful conversation at a time.
+</p>
+</div>
+
+<div class="hero">
+
+<div>
+
+<small>YOU HAVE A PLACE IN THIS BARKADA</small>
+
+<h2>
+A little support.<br>
+A lot of belonging.
+</h2>
+
+<p>
+Some days you share. Some days you listen.
+Both matter.
+</p>
+
+<div class="hero-buttons">
+<button
+class="btn-primary"
+onclick="window.location.href='discussions.html'">
+Join a discussion
+</button>
+
+<button
+class="btn-secondary"
+onclick="window.location.href='create-discussion.html'">
+Share anonymously
+</button>
+</div>
+
+</div>
+
+
+
+</div>
+
+<div class="title-row">
+<h2>Around the barkada</h2>
+<a href="discussions.html">
+View all discussions →
+</a>
+</div>
+
+<div class="layout">
+
+<div>
+   <div class="post">
+
+<div class="post-header">
+<div class="post-avatar">A</div>
+Anonymous student • 25 min ago
+</div>
+
+<h3>
+<a href="discussion-details.html"
+style="text-decoration:none;color:inherit;">
+Anyone else feeling overwhelmed by deadlines?
+</a>
+</h3>
+
+<p>
+I've been trying to keep up with everything this week.
+How do you take a break without feeling guilty about it?
+</p>
+
+<div class="tag">
+Academic life
+</div>
+
+<br>
+
+<button
+onclick="supportPost(this)"
+style="
+margin-top:10px;
+padding:6px 12px;
+border:none;
+background:#356c54;
+color:white;
+border-radius:6px;
+cursor:pointer;">
+
+❤️ Support
+
+</button>
+
+</div>
+
+<div class="post">
+
+<div class="post-header">
+<div class="post-avatar">AR</div>
+Andrea Reyes • 1 hour ago
+</div>
+
+<h3>
+<a href="discussion-details.html"
+style="text-decoration:none;color:inherit;">
+A small win: I finally asked for help.
+</a>
+</h3>
+
+<p>
+I reached out to a classmate about a lesson I didn't understand.
+It felt scary, but I'm really glad I did.
+</p>
+
+<div class="tag">
+Small wins
+</div>
+
+<br>
+
+<button
+onclick="supportPost(this)"
+style="
+margin-top:10px;
+padding:6px 12px;
+border:none;
+background:#356c54;
+color:white;
+border-radius:6px;
+cursor:pointer;">
+
+❤️ Support
+
+</button>
+
+</div>
+
+<div class="footer-box">
+Peer support, not professional care.
+If you feel unsafe or need urgent help, contact emergency services.
+</div>
+
+</div>
+
+<div>
+
+<div class="right-card"
+style="cursor:pointer;"
+onclick="window.location.href='resources.html'">
+
+<h3>Hub announcements</h3>
+
+<div class="badge">
+COMMUNITY UPDATE
+</div>
+
+<h4>
+A warm welcome to our new barkada
+</h4>
+
+<p>
+Start with a hello in Discussions.
+Share only what feels comfortable.
+</p>
+ <br>
+
+<h4>
+Our community guidelines, refreshed
+</h4>
+
+<p>
+A quick reminder on privacy,
+kindness and reporting concerns.
+</p>
+
+</div>
+
+<div class="right-card">
+
+<div
+class="right-card"
+style="cursor:pointer;"
+onclick="window.location.href='resources.html'">
+
+<p>
+Simple ways to pause when your
+schoolwork feels like a lot.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<script>
+
+const currentUser =
+JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+if(
+    !currentUser ||
+    currentUser.role === "admin"
+){
+
+    window.location.href =
+    "login.html";
+
+}
+
+/* USER INFO */
+
+document.getElementById("studentName").innerText =
+currentUser.fullname;
+
+document.getElementById("welcomeText").innerText =
+"Hi " +
+currentUser.fullname.split(" ")[0] +
+", glad you're here.";
+
+/* AVATAR */
+
+const initials =
+currentUser.fullname
+.split(" ")
+.map(name => name.charAt(0))
+.join("")
+.substring(0,2);
+
+if(currentUser.photo){
+
+    document.getElementById("avatar")
+    .innerHTML =
+    `<img
+    src="${currentUser.photo}"
+    class="user-photo">`;
+
+}else{
+
+    document.getElementById("avatar").innerText =
+    initials;
+
+}
+
+/* SUPPORT BUTTON */
+
+function supportPost(button){
+
+    const postTitle =
+    button.parentElement
+    .querySelector("h3")
+    .innerText;
+
+    localStorage.setItem(
+        "supported_" + postTitle,
+        "true"
+    );
+
+    button.innerHTML =
+    "❤️ Supported";
+
+    button.disabled =
+    true;
+
+    button.style.opacity =
+    "0.7";
+
+}
+
+/* RESTORE SUPPORT STATE */
+
+document
+.querySelectorAll(".post")
+.forEach(post => {
+
+    const title =
+    post.querySelector("h3")
+    .innerText;
+
+    const button =
+    post.querySelector("button");
+
+    if(
+        localStorage.getItem(
+        "supported_" + title
+        ) === "true"
+    ){
+
+        button.innerHTML =
+        "❤️ Supported";
+
+        button.disabled =
+        true;
+
+        button.style.opacity =
+        "0.7";
+
+    }
+
+});
+
+/* LOGOUT */
+
+function logout(){
+
+    if(
+    confirm(
+    "Are you sure you want to sign out?"
+    )){
+
+        localStorage.removeItem(
+        "currentUser"
+        );
+
+        window.location.replace(
+        "login.html"
+        );
+
+    }
+
+}
+
+/* COMMUNITY GUIDELINES */
+
+function showGuidelines(){
+
+    alert(
+`BARKADA HUB GUIDELINES
+
+• Be respectful
+• Respect privacy
+• No bullying
+• No hate speech
+• No harmful content
+• Report concerns when needed`
+    );
+
+}
+
+</script>
+
+</body>
+</html>

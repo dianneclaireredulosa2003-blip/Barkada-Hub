@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barkada Hub Register</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    background:#fff;
+}
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* LEFT SIDE */
+
+.left{
+    width:45%;
+    background:#EEF3EE;
+    padding:35px 42px;
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:50px;
+}
+
+.logo-icon{
+    width:36px;
+    height:36px;
+    background:#2F6B50;
+    border-radius:8px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.logo-text{
+    font-weight:700;
+    color:#244A39;
+}
+
+.tagline{
+    font-size:12px;
+    color:#3D634F;
+    margin-bottom:20px;
+}
+
+.left h1{
+    font-size:60px;
+    line-height:1.1;
+    color:#244A39;
+    margin-bottom:20px;
+}
+
+.left-desc{
+    color:#4F6D5C;
+    line-height:1.6;
+    margin-bottom:35px;
+}
+
+.hero-image{
+    overflow:hidden;
+    border-radius:22px;
+}
+
+.hero-image img{
+    width:100%;
+    display:block;
+}
+
+.info{
+    display:flex;
+    gap:12px;
+    margin-top:30px;
+}
+
+.info i{
+    color:#2F6B50;
+    font-size:18px;
+}
+
+.info h4{
+    color:#244A39;
+    font-size:15px;
+}
+.info p{
+    font-size:13px;
+    color:#6F7D75;
+    margin-top:5px;
+}
+
+.bottom-note{
+    margin-top:auto;
+    font-size:11px;
+    color:#89928C;
+}
+
+/* RIGHT SIDE */
+
+.right{
+    width:55%;
+    padding:35px 80px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    color:#888;
+}
+
+.form-container{
+    width:100%;
+    max-width:430px;
+    margin:auto;
+    padding-top:30px;
+}
+
+.form-container h2{
+    font-size:55px;
+    color:#244A39;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#767676;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+    margin-top:14px;
+}
+
+input,
+select{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #D8D8D8;
+    border-radius:6px;
+    outline:none;
+}
+
+.row{
+    display:flex;
+    gap:12px;
+}
+
+.row .box{
+    flex:1;
+}
+
+.helper{
+    font-size:11px;
+    color:#8A8A8A;
+    margin-top:7px;
+}
+
+.password-wrap{
+    position:relative;
+}
+
+.password-wrap i{
+    position:absolute;
+    right:14px;
+    top:15px;
+    color:#888;
+}
+
+.checkbox{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-top:18px;
+}
+
+.checkbox input{
+    width:auto;
+    margin-top:3px;
+}
+
+.checkbox label{
+    margin:0;
+    font-weight:400;
+    font-size:13px;
+    color:#555;
+}
+
+.checkbox small{
+    display:block;
+    margin-top:5px;
+    color:#888;
+}
+.register-btn{
+    width:100%;
+    margin-top:20px;
+    background:#356C54;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:7px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.register-btn:hover{
+    background:#295641;
+}
+
+.login-link{
+    margin-top:18px;
+    text-align:center;
+    color:#777;
+    font-size:14px;
+}
+
+.login-link a{
+    text-decoration:none;
+    color:#2F6B50;
+    font-weight:700;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:space-between;
+    margin-top:45px;
+    color:#909090;
+    font-size:11px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="left">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-user-group"></i>
+            </div>
+            <div class="logo-text">
+               PLMUN Barkada Hub
+            </div>
+        </div>
+
+        <div class="tagline">
+            A COMMUNITY FOR PLMUN STUDENTS
+        </div>
+
+        <h1>
+            You don't have to
+            figure it out alone.
+        </h1>
+
+        <div class="left-desc">
+            Find your people. Share what's on your mind.
+            Make room for a little more kindness.
+        </div>
+
+        <div class="hero-image">
+            <img src="students.jpg" alt="">
+        </div>
+
+        <div class="info">
+            <i class="fa-regular fa-heart"></i>
+  <div>
+                <h4>Real conversations. A kinder campus.</h4>
+                <p>A space to listen, connect, and feel understood.</p>
+
+  </div>
+        </div>
+
+        <div class="bottom-note">
+            Peer support and mental wellness awareness.
+            Not an emergency service.
+        </div>
+
+    </div>
+
+    <div class="right">
+
+        <div class="topbar">
+            <span>STUDENT ACCESS</span>
+            <span>
+                
+                A space built on respect
+            </span>
+        </div>
+
+        <div class="form-container">
+
+            <h2>Find your place here.</h2>
+
+            <div class="subtitle">
+                Join the PLMUN Barkada Hub community.
+            </div>
+
+            <form id="registerForm">
+
+                <label>Full name</label>
+                <input
+                type="text"
+                id="fullname"
+                placeholder="Your first and last name"
+                required>
+
+                <div class="row">
+
+                    <div class="box">
+                        <label>Student number</label>
+                        <input
+                        type="text"
+                        id="studentno"
+                        placeholder="Your student number"
+                        required>
+                    </div>
+
+                    <div class="box">
+                        <label>Year level</label>
+
+                        <select id="yearlevel" required>
+                            <option value="">Select year</option>
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>4th Year</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <label>Email address</label>
+                <input
+                type="email"
+                id="email"
+                placeholder="Enter your email address"
+                required>
+
+                <div class="helper">
+                    Use an email you can access for account messages.
+                </div>
+
+                <label>Password</label>
+
+                <div class="password-wrap">
+                    <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    required>
+           <i
+class="fa-regular fa-eye-slash"
+id="togglePass1"
+style="cursor:pointer;"></i>
+                </div>
+
+                <div class="helper">
+                    Use at least 8 characters, with a letter and a number.
+                </div>
+
+                <label>Confirm password</label>
+
+                <div class="password-wrap">
+                    <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Re-enter your password"
+                    required>
+
+                    <i
+class="fa-regular fa-eye-slash"
+id="togglePass2"
+style="cursor:pointer;"></i>
+                </div>
+
+                <div class="checkbox">
+
+                    <input type="checkbox" required>
+
+                    <div>
+                        <label>
+                            I agree to the Community guidelines and Privacy notice.
+                        </label>
+
+                        <small>
+                            I'll help keep this space respectful and supportive.
+                        </small>
+                    </div>
+
+                </div>
+
+                <button
+                class="register-btn"
+                type="submit">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Create my account
+                </button>
+
+            </form>
+          <div class="login-link">
+                Already part of the barkada?
+                <a href="login.html">Log in</a>
+            </div>
+
+            <div class="footer-links">
+                <span>Community guidelines</span>
+                <span>Privacy notice</span>
+                <span>PLMUN Barkada Hub</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("registerForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const fullname =
+    document.getElementById("fullname").value;
+
+    const studentno =
+    document.getElementById("studentno").value;
+
+    const yearlevel =
+    document.getElementById("yearlevel").value;
+
+    const email =
+    document.getElementById("email").value;
+
+    const password =
+    document.getElementById("password").value;
+
+    const confirmPassword =
+    document.getElementById("confirmPassword").value;
+
+    if(password.length < 8){
+
+    alert(
+    "Password must be at least 8 characters."
+    );
+
+    return;
+
+}
+const existingUser =
+JSON.parse(localStorage.getItem(email));
+
+if(existingUser){
+
+    alert(
+    "Email already registered."
+    );
+
+    return;
+
+}
+    const user = {
+
+    fullname,
+    studentno,
+    yearlevel,
+    email,
+    password,
+    role:"student"
+
+};
+
+    localStorage.setItem(
+"currentUser",
+JSON.stringify(user)
+);
+
+alert(
+"Account created successfully!"
+);
+
+window.location.href =
+"dashboard.html";
+
+});
+function togglePassword(
+inputId,
+iconId
+){
+
+const input =
+document.getElementById(inputId);
+
+const icon =
+document.getElementById(iconId);
+
+icon.addEventListener("click",()=>{
+
+if(input.type==="password"){
+
+input.type="text";
+
+icon.classList.remove(
+"fa-eye-slash"
+);
+
+icon.classList.add(
+"fa-eye"
+);
+
+}else{
+
+input.type="password";
+
+icon.classList.remove(
+"fa-eye"
+);
+
+icon.classList.add(
+"fa-eye-slash"
+);
+
+}
+
+});
+
+}
+
+togglePassword(
+"password",
+"togglePass1"
+);
+
+togglePassword(
+"confirmPassword",
+"togglePass2"
+);
+
+</script>
+
+</body>
+</html>               

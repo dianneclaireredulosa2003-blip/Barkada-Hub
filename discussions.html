@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barkada Hub - Discussions</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+    
+}
+
+body{
+    background:#f4f6f2;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:160px;
+    background:#fff;
+    border-right:1px solid #e5e7e4;
+    display:flex;
+    flex-direction:column;
+    padding:14px 10px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:28px;
+}
+
+.logo-icon{
+    width:32px;
+    height:32px;
+    border-radius:9px;
+    background:#356c54;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.logo-small{
+    font-size:8px;
+    letter-spacing:1px;
+    color:#587060;
+}
+
+.logo-title{
+    font-size:15px;
+    font-weight:700;
+    color:#223f31;
+}
+
+.nav-title{
+    font-size:9px;
+    color:#8b938c;
+    margin-bottom:10px;
+    letter-spacing:1px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:#6e736f;
+    padding:10px 12px;
+    border-radius:8px;
+    margin-bottom:6px;
+    font-size:12px;
+}
+
+.menu a.active{
+    background:#edf3ee;
+    color:#356c54;
+    font-weight:600;
+}
+.voice-box{
+    background:#edf3ee;
+    border-radius:14px;
+    padding:14px;
+    margin-top:22px;
+}
+
+.voice-box h4{
+    margin-top:8px;
+    margin-bottom:8px;
+    font-size:12px;
+    color:#2f4b3d;
+}
+
+.voice-box p{
+    font-size:10px;
+    line-height:1.6;
+    color:#7d847f;
+}
+
+.voice-box button{
+    width:100%;
+    height:34px;
+    background:#356c54;
+    color:white;
+    border:none;
+    border-radius:7px;
+    margin-top:12px;
+    cursor:pointer;
+    font-size:11px;
+}
+
+.sidebar-footer{
+    margin-top:auto;
+    border-top:1px solid #e6e6e6;
+    padding-top:12px;
+}
+
+.sidebar-footer a{
+    display:block;
+    font-size:10px;
+    text-decoration:none;
+    color:#8a918c;
+    margin-bottom:14px;
+}
+
+/* MAIN */
+
+.main{
+    flex:1;
+}
+
+.topbar{
+    height:25px;
+    background:white;
+    border-bottom:1px solid #e5e7e4;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+}
+.quote{
+    font-size:12px;
+    color:#777;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.avatar{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#d8e5d8;
+    color:#356c54;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:11px;
+    font-weight:600;
+}
+
+.profile-info strong{
+    display:block;
+    font-size:11px;
+}
+
+.profile-info small{
+    color:#8a918c;
+    font-size:9px;
+}
+
+/* CONTENT */
+
+.content{
+    padding:10px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+
+.header h1{
+    color:#2c493a;
+    font-size:22px;
+}
+
+.header p{
+    color:#818782;
+    font-size:12px;
+    margin-top:8px;
+   
+}
+
+.start-btn{
+    
+    width:140px;
+     max-width:100%;
+    height:38px;
+    border:4px;
+    border-radius:20px;
+    background:#356c54;
+    color:white;
+    font-size:12px;
+    cursor:pointer;
+    
+    
+    
+    
+}
+/* SEARCH */
+
+.search-box{
+    width:420px;
+    max-width:100%;
+    background:white;
+    height:38px;
+    border:1px solid #d9ddda;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    margin-bottom:14px;
+}
+
+.search-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    background:transparent;
+    margin-left:8px;
+}
+
+.filters{
+    margin-top:14px;
+    display:flex;
+    gap:8px;
+}
+
+.filter{
+    border:1px solid #dce0dc;
+    background:white;
+    border-radius:16px;
+    padding:7px 12px;
+    font-size:11px;
+    color:#737873;
+}
+.filter.active{
+    background:#356c54;
+    color:white;
+    border:none;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 230px;
+    gap:18px;
+    margin-top:16px;
+}
+
+/* POSTS */
+
+.section-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    color:#777;
+    font-size:11px;
+}
+
+.post{
+    background:white;
+    border:1px solid #e4e7e3;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:14px;
+}
+
+.post-top{
+    display:flex;
+    align-items:center;
+    margin-bottom:15px;
+}
+.post-top{
+    display:flex;
+    align-items:center;
+    margin-bottom:15px;
+}
+.post-footer{
+    margin-top:12px;
+    display:flex;
+    justify-content:flex-end;
+    gap:20px;
+    color:#8c918c;
+    font-size:11px;
+}
+
+/* RIGHT */
+
+.card{
+    background:white;
+    border:1px solid #e4e7e3;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:16px;
+}
+
+.card h3{
+    color:#304b3f;
+    font-size:14px;
+    margin-bottom:14px;
+}
+
+.card ul{
+    padding-left:18px;
+}
+
+.card li{
+    color:#777;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.story-card{
+    background:#edf3ee;
+}
+
+.story-card button{
+    width:100%;
+    margin-top:16px;
+    height:32px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:#356c54;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.extra-text{
+    margin-top:20px;
+    font-size:12px;
+    color:#304b3f;
+}
+
+.extra-text p{
+    color:#888;
+    margin-top:8px;
+}
+.load-btn{
+    width:100%;
+    height:34px;
+    border:1px solid #dfe3df;
+    background:white;
+    border-radius:6px;
+    color:#356c54;
+    cursor:pointer;
+}
+.guideline-link{
+    color:#356c54;
+    font-size:11px;
+    text-decoration:none;
+    font-weight:600;
+}
+.user-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+
+        <div
+class="logo"
+style="cursor:pointer;"
+onclick="window.location.href='dashboard.html'">
+            <div class="logo-icon">
+                <i class="fas fa-user-group"></i>
+            </div>
+
+            <div>
+                <div class="logo-title">PLMUN</div>
+                <div class="logo-title">Barkada Hub</div>
+            </div>
+        </div>
+
+        <div class="nav-title">
+            YOUR COMMUNITY
+        </div>
+
+        <div class="menu">
+
+            <a href="dashboard.html">
+                <i class="fas fa-house"></i>
+                Home
+            </a>
+            <a href="discussions.html" class="active">
+                <i class="far fa-comments"></i>
+                Discussions
+            </a>
+
+            <a href="resources.html">
+<i class="far fa-bookmark"></i>
+Wellness resources
+</a>
+
+            <a href="profile.html">
+<i class="far fa-user"></i>
+My profile
+</a>
+
+
+
+        </div>
+
+        <div class="voice-box">
+
+
+            <h4>Your voice belongs here.</h4>
+
+            <p>
+                A small thought can start a meaningful conversation.
+            </p>
+            <button onclick="window.location.href='create-discussion.html'">
++ Share a thought
+</button>
+
+        </div>
+
+        <div class="sidebar-footer">
+            <a
+href="#"
+class="guideline-link"
+onclick="showGuidelines()">
+Community guidelines
+</a>
+            <a href="#" onclick="logout()">Sign out</a>
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+<div class="content">
+
+        <div class="topbar">
+
+            <div class="quote">
+                A little connection goes a long way.
+            </div>
+
+            <div class="profile">
+
+                <div
+class="avatar"
+id="avatar"
+style="cursor:pointer;"
+onclick="window.location.href='profile.html'">
+U
+</div>
+
+                <div
+class="profile-info"
+style="cursor:pointer;"
+onclick="window.location.href='profile.html'">
+                    <strong id="studentName">
+Student
+</strong>
+                    <small>PLMUN student</small>
+                </div>
+         </div>
+
+        </div>
+
+        <div class="header">
+
+    <div>
+
+        <h1>Let's talk, barkada.</h1>
+
+        <p>
+            A place for honest questions, shared experiences,
+            and a little encouragement.
+        </p>
+
+    </div>
+
+    <button
+    class="start-btn"
+    onclick="window.location.href='create-discussion.html'">
+
+        + Start a discussion
+
+    </button>
+
+</div>
+
+<div class="search-box">
+
+    <i class="fas fa-search"></i>
+
+    <input
+        id="searchInput"
+        type="text"
+        placeholder="Search conversations or topics">
+
+</div>
+            <div class="filters">
+                <div class="filter active">All topics</div>
+                <div class="filter">Academic life</div>
+                <div class="filter">Feelings</div>
+                <div class="filter">Friendships</div>
+                <div class="filter">Small wins</div>
+            </div>
+
+            <div class="grid">
+
+                <div>
+
+                    <div class="section-row">
+                        <span>Conversations from your community</span>
+                        <span>Recent activity ▼</span>
+                    </div>
+
+               <div class="post"
+onclick="window.location.href='discussion-details.html'"
+style="cursor:pointer;">
+
+    <div class="post-top">
+
+        <div class="post-avatar">A</div>
+
+        <div class="post-user">
+            <strong>Anonymous Student</strong>
+            <small> • 25 min ago</small>
+        </div>
+
+        <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
+
+    </div>
+
+    <h3>
+        Anyone else feeling overwhelmed by deadlines?
+    </h3>
+
+    <p>
+        I've been trying to keep up with everything this week.
+        How do you take a break without feeling guilty about it?
+    </p>
+
+    <div class="tag">
+        Academic life
+    </div>
+
+    <div class="post-footer">
+        <span>♡ 18 support</span>
+        <span>💬 6 replies</span>
+    </div>
+
+</div>
+
+                   <div class="post"
+onclick="window.location.href='discussion-details.html'"
+style="cursor:pointer;">
+
+    <div class="post-top">
+
+        <div class="post-avatar">AR</div>
+
+        <div class="post-user">
+            <strong>Andrea Reyes</strong>
+            <small> • 1 hour ago</small>
+        </div>
+
+        <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
+
+    </div>
+
+    <h3>
+        A small win: I finally asked for help.
+    </h3>
+
+    <p>
+        I reached out to a classmate about a lesson I didn't
+        understand. It felt scary, but I'm really glad I did.
+    </p>
+
+    <div class="tag">
+        Small wins
+    </div>
+
+    <div class="post-footer">
+        <span>♡ 24 support</span>
+        <span>💬 9 replies</span>
+    </div>
+
+</div>
+
+
+     <div id="postsContainer"></div>
+<div class="post"
+onclick="window.location.href='discussion-details.html'"
+style="cursor:pointer;">
+
+    <div class="post-top">
+
+</div>
+
+<div class="post"
+onclick="window.location.href='discussion-details.html'"
+style="cursor:pointer;">
+</div>
+
+ <button
+class="load-btn"
+onclick="alert('All conversations loaded.')">
+                        Load more conversations
+                    </button>
+
+                </div>
+
+                <div>
+
+                    <div class="card">
+
+                        <h3>
+                             A kinder space, together
+                        </h3>
+
+                        <ul>
+                            <li>Respect privacy and personal boundaries.</li>
+                            <li>No harassment or harmful content.</li>
+                            <li>Use Report if something feels unsafe.</li>
+                        </ul>
+
+                       <a
+href="#"
+class="guideline-link"
+onclick="showGuidelines()">
+Read community guidelines →
+</a>
+
+
+                    </div> 
+                    <div class="card story-card">
+
+                        <h3>Your story, your pace.</h3>
+
+                        <p style="font-size:12px;color:#777;">
+                            Not ready to share your name?
+                            You can post as “Anonymous student.”
+                        </p>
+
+                        <p style="font-size:11px;color:#999;margin-top:12px;">
+                            Your identity is hidden from peers.
+                        </p>
+
+                        <button onclick="window.location.href='create-discussion.html'">
+Share anonymously
+</button>
+
+                    </div>
+
+                    <div class="extra-text">
+                        <strong>You don't need the perfect words.</strong>
+                        <p>Sometimes "I hear you" is a good place to start.</p>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</div>
+
+</div>
+<script>
+
+
+const currentUser =
+JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+if(
+!currentUser ||
+currentUser.role === "admin"
+){
+
+    window.location.href =
+    "login.html";
+
+}
+
+const posts =
+JSON.parse(
+localStorage.getItem("posts")
+) || [];
+
+const container =
+document.getElementById(
+"postsContainer"
+);
+
+posts.forEach(post=>{
+
+container.innerHTML += `
+
+<div class="post">
+
+<div class="post-top">
+
+<div class="post-avatar">
+A
+</div>
+
+<div class="post-user">
+
+<strong>
+${post.author}
+</strong>
+
+<small>
+• ${post.createdAt || "Just now"}
+</small>
+
+</div>
+
+</div>
+
+<h3>
+
+<a href="discussion-details.html?id=${post.id}"
+style="text-decoration:none;color:inherit;">
+
+${post.title}
+
+</a>
+
+</h3>
+
+<p>
+
+${post.content}
+
+</p>
+
+<div class="tag">
+
+${post.topic}
+
+</div>
+
+<div class="post-footer">
+    <span>♡ 0 support</span>
+    <span>💬 0 replies</span>
+</div>
+
+</div>
+`;
+
+});
+
+
+document.getElementById("studentName").innerText =
+currentUser.fullname;
+
+const initials =
+currentUser.fullname
+.split(" ")
+.map(name => name.charAt(0))
+.join("")
+.substring(0,2);
+
+if(currentUser.photo){
+
+    document.getElementById("avatar")
+    .innerHTML =
+    `<img src="${currentUser.photo}" class="user-photo">`;
+
+}else{
+
+    document.getElementById("avatar").innerText =
+    initials;
+
+}
+document
+.getElementById("searchInput")
+.addEventListener("keyup", function(){
+
+    const search =
+    this.value.toLowerCase();
+
+    document
+    .querySelectorAll(".post")
+    .forEach(post => {
+
+        const text =
+        post.innerText.toLowerCase();
+
+        post.style.display =
+        text.includes(search)
+        ? "block"
+        : "none";
+
+    });
+
+});
+
+function logout(){
+
+    if(confirm(
+    "Are you sure you want to sign out?"
+    )){
+
+        localStorage.removeItem(
+        "currentUser"
+        );
+
+        window.location.replace(
+        "login.html"
+        );
+
+    }
+
+}
+
+function showGuidelines(){
+
+alert(`
+BARKADA HUB GUIDELINES
+
+• Respect privacy
+• Be supportive
+• No bullying
+• No harassment
+• No hate speech
+• Report unsafe content
+`);
+
+}
+
+</script>
+</div>
+</main>
+</body>
+</html>                                      

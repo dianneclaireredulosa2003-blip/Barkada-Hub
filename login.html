@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barkada Hub Login</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    background:#fff;
+}
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* LEFT PANEL */
+
+.left{
+    width:45%;
+    background:#EEF3EE;
+    padding:24px 28px;
+    display:flex;
+    flex-direction:column;
+}
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:45px;
+}
+
+.logo-icon{
+    width:34px;
+    height:34px;
+    background:#2F6B50;
+    border-radius:8px;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.logo-text{
+    font-size:20px;
+    font-weight:700;
+    color:#254B39;
+}
+
+.tagline{
+    font-size:10px;
+    color:#4C6956;
+    margin-bottom:15px;
+    letter-spacing:1px;
+}
+
+.left h1{
+    font-size:58px;
+    color:#244A39;
+    line-height:1.1;
+    margin-bottom:18px;
+    max-width:450px;
+}
+
+.left-desc{
+    color:#547364;
+    font-size:15px;
+    max-width:450px;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+.hero-image{
+    width:100%;
+    max-width:520px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.hero-image img{
+    width:100%;
+    display:block;
+}
+
+.info{
+    margin-top:20px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+}
+
+.info i{
+    color:#2F6B50;
+    font-size:20px;
+}
+
+.info h4{
+    color:#244A39;
+    font-size:15px;
+}
+
+.info p{
+    color:#7B857E;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.bottom-note{
+    margin-top:auto;
+    color:#8B968F;
+    font-size:11px;
+}
+
+/* RIGHT PANEL */
+
+.right{
+    width:55%;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    padding:30px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    color:#868686;
+    font-size:11px;
+}
+
+.login-container{
+    width:100%;
+    max-width:470px;
+    margin:auto;
+}
+
+.login-icon{
+    width:50px;
+    height:50px;
+    background:#E8EFE8;
+    color:#2F6B50;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.login-container h2{
+    font-size:48px;
+    color:#244A39;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#747474;
+    margin-bottom:30px;
+}
+label{
+    display:block;
+    font-weight:600;
+    font-size:13px;
+    margin-bottom:8px;
+    margin-top:18px;
+}
+
+.input-group{
+    position:relative;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px 45px 14px 15px;
+    border:1px solid #DDDDDD;
+    border-radius:8px;
+    outline:none;
+}
+
+.input-group i{
+    position:absolute;
+    right:15px;
+    top:15px;
+    color:#888;
+}
+
+.options{
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+}
+
+.options a{
+    text-decoration:none;
+    color:#2F6B50;
+    font-weight:600;
+}
+.login-btn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    background:#356C54;
+    border:none;
+    border-radius:8px;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#295641;
+}
+
+.signup{
+    text-align:center;
+    margin-top:22px;
+    font-size:13px;
+    color:#777;
+}
+
+.signup a{
+    color:#2F6B50;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.divider{
+    margin:25px 0;
+    border:none;
+    border-top:1px solid #E5E5E5;
+}
+
+.privacy{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:12px;
+    color:#7C7C7C;
+}
+
+.footer-links{
+    margin-top:80px;
+    display:flex;
+    justify-content:space-between;
+    color:#919191;
+    font-size:11px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LEFT -->
+
+    <div class="left">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-user-group"></i>
+            </div>
+
+            <div class="logo-text">
+               PLMUN Barkada Hub
+            </div>
+        </div>
+
+        <div class="tagline">
+            A COMMUNITY FOR PLMUN STUDENTS
+        </div>
+
+        <h1>
+            You don’t have to
+            figure it out alone.
+        </h1>
+
+        <div class="left-desc">
+            Find your people. Share what's on your mind.
+            Make room for a little more kindness.
+        </div>
+        <div class="hero-image">
+            <img src="students.jpg" alt="">
+        </div>
+
+        <div class="info">
+
+            <i class="fa-regular fa-heart"></i>
+
+            <div>
+                <h4>Real conversations. A kinder campus.</h4>
+                <p>A space to listen, connect, and feel understood.</p>
+            </div>
+
+        </div>
+
+        <div class="bottom-note">
+            Peer support and mental wellness awareness.
+            Not an emergency service.
+        </div>
+
+    </div>
+    <!-- RIGHT -->
+
+    <div class="right">
+
+        <div class="topbar">
+            <span>STUDENT ACCESS</span>
+            <span>
+                
+                A space built on respect
+            </span>
+        </div>
+
+        <div class="login-container">
+
+            <div class="login-icon">
+                <i class="fa-solid fa-link"></i>
+            </div>
+
+            <h2>Welcome back, barkada.</h2>
+
+            <div class="subtitle">
+                A familiar space to connect and be yourself.
+            </div>
+
+            <form id="loginForm">
+
+                <label>Email address</label>
+
+                <div class="input-group">
+                    <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email address"
+                    required>
+
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+
+                <label>Password</label>
+
+                <div class="input-group">
+                    <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required>
+
+                   <i
+class="fa-regular fa-eye-slash"
+id="togglePassword"
+style="cursor:pointer;">
+</i>
+                </div>
+                <div class="options">
+
+                    <label style="margin:0;font-weight:400;">
+    <input
+    type="checkbox"
+    id="rememberMe">
+
+    Remember me
+</label>
+
+                    <a href="#" onclick="forgotPassword()">
+Forgot password?
+</a>
+
+                </div>
+
+                <button class="login-btn" type="submit">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Log in
+                </button>
+
+            </form>
+
+            <div class="signup">
+                New to the community?
+                <a href="register.html">Create an account</a>
+            </div>
+
+            <hr class="divider">
+
+            <div class="privacy">
+               
+
+                <span>
+                    Your experiences deserve care. Choose what
+                    you share, and always respect the privacy of others.
+                </span>
+            </div>
+
+            <div class="footer-links">
+                <span>Community guidelines</span>
+                <span>Privacy notice</span>
+                <span>PLMUN Barkada Hub</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+    // CREATE ADMIN ACCOUNT IF NOT EXISTS
+
+if(!localStorage.getItem("admin@plmun.edu.ph")){
+
+    localStorage.setItem(
+        "admin@plmun.edu.ph",
+        JSON.stringify({
+            fullname:"Administrator",
+            email:"admin@plmun.edu.ph",
+            password:"admin12345",
+            role:"admin"
+        })
+    );
+
+}
+
+// AUTO LOGIN CHECK
+
+const currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+if(currentUser){
+
+    window.location.href =
+    "dashboard.html";
+    if(user.role === "admin"){
+
+    window.location.href =
+    "admin-dashboard.html";
+
+}else{
+
+    window.location.href =
+    "dashboard.html";
+
+}
+
+}
+
+// REMEMBERED EMAIL
+
+const rememberedEmail =
+localStorage.getItem("rememberedEmail");
+
+if(rememberedEmail){
+
+    document.getElementById("email").value =
+    rememberedEmail;
+
+    document.getElementById("rememberMe").checked =
+    true;
+
+}
+
+// SHOW / HIDE PASSWORD
+
+const togglePassword =
+document.getElementById("togglePassword");
+
+const passwordInput =
+document.getElementById("password");
+
+togglePassword.addEventListener("click", function(){
+
+    if(passwordInput.type === "password"){
+
+        passwordInput.type = "text";
+
+        togglePassword.classList.remove("fa-eye-slash");
+        togglePassword.classList.add("fa-eye");
+
+    }else{
+
+        passwordInput.type = "password";
+
+        togglePassword.classList.remove("fa-eye");
+        togglePassword.classList.add("fa-eye-slash");
+
+    }
+
+});
+
+// LOGIN
+
+document.getElementById("loginForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const email =
+    document.getElementById("email")
+    .value
+    .trim()
+    .toLowerCase();
+
+    const password =
+    document.getElementById("password")
+    .value
+    .trim();
+
+    const rememberMe =
+    document.getElementById("rememberMe")
+    .checked;
+
+    const user =
+    JSON.parse(localStorage.getItem(email));
+
+    if(user && user.password === password){
+
+        localStorage.setItem(
+            "currentUser",
+            JSON.stringify(user)
+        );
+
+        if(rememberMe){
+
+            localStorage.setItem(
+                "rememberedEmail",
+                email
+            );
+
+        }else{
+
+            localStorage.removeItem(
+                "rememberedEmail"
+            );
+
+        }
+
+        if(email === "admin@plmun.edu.ph"){
+
+            window.location.href =
+            "admin-dashboard.html";
+
+        }else{
+
+            window.location.href =
+            "dashboard.html";
+
+        }
+
+    }else{
+
+        alert("Incorrect email or password.");
+
+    }
+
+});
+
+// FORGOT PASSWORD
+
+function forgotPassword(){
+
+    const email = prompt(
+        "Enter your registered email:"
+    );
+
+    if(!email) return;
+
+    const user =
+    JSON.parse(
+        localStorage.getItem(
+            email.trim().toLowerCase()
+        )
+    );
+
+    if(!user){
+
+        alert("Account not found.");
+        return;
+
+    }
+
+    const newPassword =
+    prompt(
+        "Enter your new password:"
+    );
+
+    if(
+        !newPassword ||
+        newPassword.length < 8
+    ){
+
+        alert(
+            "Password must be at least 8 characters."
+        );
+
+        return;
+
+    }
+
+    user.password = newPassword;
+
+    localStorage.setItem(
+        user.email,
+        JSON.stringify(user)
+    );
+
+    alert(
+        "Password successfully changed."
+    );
+
+}
+
+</script>
+
+</body>
+</html>

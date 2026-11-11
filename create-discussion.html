@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's on your mind? - Barkada Hub</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#F5F6F2;
+color:#314B3F;
+}
+
+.container{
+display:flex;
+min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:140px;
+background:#fff;
+border-right:1px solid #E5E8E3;
+padding:12px;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+display:flex;
+gap:8px;
+align-items:center;
+margin-bottom:25px;
+}
+.logo-icon{
+width:28px;
+height:28px;
+background:#356C54;
+border-radius:8px;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+}
+
+.logo small{
+display:block;
+font-size:7px;
+letter-spacing:1px;
+color:#6D796F;
+}
+.logo strong{
+display:block;
+font-size:14px;
+}
+
+.community{
+font-size:8px;
+letter-spacing:1px;
+color:#9AA09B;
+margin-bottom:10px;
+}
+
+.menu a{
+display:flex;
+gap:8px;
+align-items:center;
+padding:10px;
+text-decoration:none;
+color:#6D726D;
+border-radius:8px;
+font-size:11px;
+margin-bottom:4px;
+}
+
+.menu a.active{
+background:#EDF3EE;
+color:#356C54;
+font-weight:600;
+}
+.voice-card{
+margin-top:18px;
+background:#EDF3EE;
+border-radius:12px;
+padding:12px;
+}
+
+.voice-card h4{
+font-size:12px;
+margin:8px 0;
+}
+
+.voice-card p{
+font-size:10px;
+line-height:1.5;
+color:#7C837E;
+margin-bottom:10px;
+}
+
+.voice-card button{
+width:100%;
+height:32px;
+background:#356C54;
+border:none;
+border-radius:8px;
+color:white;
+font-size:11px;
+cursor:pointer;
+}
+.sidebar-footer{
+margin-top:auto;
+border-top:1px solid #EFEFEF;
+padding-top:10px;
+}
+
+.sidebar-footer a{
+display:block;
+text-decoration:none;
+color:#909691;
+font-size:10px;
+margin-top:12px;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+}
+
+.topbar{
+height:56px;
+background:white;
+border-bottom:1px solid #E5E8E3;
+padding:0 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.quote{
+font-size:11px;
+color:#7D847F;
+}
+.profile{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.avatar{
+width:28px;
+height:28px;
+border-radius:50%;
+background:#DCE7DC;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+font-weight:600;
+color:#356C54;
+}
+
+.profile strong{
+display:block;
+font-size:11px;
+}
+
+.profile small{
+font-size:9px;
+color:#98A09A;
+}
+
+/* PAGE */
+
+.content{
+width:810px;
+margin:auto;
+padding:30px 0;
+}
+.back-link{
+display:inline-flex;
+align-items:center;
+gap:6px;
+text-decoration:none;
+color:#356C54;
+font-size:12px;
+font-weight:600;
+margin-bottom:20px;
+}
+
+.page-title{
+font-size:18px;
+font-weight:700;
+margin-bottom:6px;
+}
+
+.subtitle{
+font-size:11px;
+color:#88908A;
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:545px 220px;
+gap:18px;
+align-items:start;
+}
+
+.card{
+background:white;
+border:1px solid #E3E7E2;
+border-radius:16px;
+padding:16px;
+}
+/* FORM */
+
+.section-title{
+font-size:12px;
+font-weight:600;
+margin-bottom:12px;
+}
+
+.share-options{
+display:flex;
+gap:8px;
+margin-bottom:16px;
+}
+
+.option{
+flex:1;
+height:34px;
+border:1px solid #DDE2DD;
+border-radius:8px;
+padding:0 12px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+font-size:11px;
+cursor:pointer;
+}
+
+.option.active{
+background:#EDF3EE;
+border-color:#356C54;
+color:#356C54;
+font-weight:600;
+}
+.info-box{
+background:#F3F4F3;
+padding:12px;
+border-radius:8px;
+font-size:10px;
+line-height:1.6;
+color:#7D827D;
+margin-bottom:16px;
+}
+
+label{
+display:block;
+font-size:11px;
+font-weight:600;
+margin-bottom:8px;
+margin-top:16px;
+}
+
+input,
+select{
+width:100%;
+height:32px;
+border:1px solid #DDE2DD;
+border-radius:6px;
+padding:0 10px;
+font-size:12px;
+}
+
+textarea{
+width:100%;
+height:130px;
+border:1px solid #356C54;
+border-radius:8px;
+padding:12px;
+resize:none;
+font-size:12px;
+line-height:1.8;
+}
+.counter{
+display:flex;
+justify-content:space-between;
+font-size:10px;
+color:#949A94;
+margin-top:6px;
+}
+.guideline{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:16px;
+    font-size:11px;
+    color:#808680;
+}
+
+.guideline input[type="checkbox"]{
+    width:13px;
+    height:13px;
+    accent-color:#356C54;
+    flex-shrink:0;
+}
+
+.guideline label{
+    margin:0;
+    font-size:11px;
+    font-weight:400;
+    color:#808680;
+}
+
+.actions{
+display:flex;
+justify-content:space-between;
+margin-top:18px;
+}
+
+.cancel-btn{
+height:31px;
+padding:0 14px;
+border:1px solid #DDE2DD;
+background:white;
+border-radius:6px;
+cursor:pointer;
+font-size:11px;
+}
+.publish-btn{
+height:31px;
+padding:0 14px;
+background:#356C54;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:11px;
+font-weight:600;
+}
+
+/* RIGHT COLUMN */
+
+.side-card{
+background:white;
+border:1px solid #E3E7E2;
+border-radius:16px;
+padding:14px;
+margin-bottom:14px;
+}
+
+.side-card h3{
+font-size:11px;
+margin-bottom:14px;
+}
+.preview{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.preview-icon{
+width:28px;
+height:28px;
+border-radius:50%;
+background:#DCE9DC;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#356C54;
+}
+
+.preview strong{
+font-size:11px;
+}
+
+.preview small{
+display:block;
+font-size:9px;
+color:#999;
+}
+
+.side-card p{
+margin-top:12px;
+font-size:11px;
+line-height:1.6;
+color:#777;
+}
+.reminder{
+background:#EDF4EE;
+}
+
+.reminder h2{
+font-size:14px;
+margin-bottom:12px;
+}
+
+.reminder ul{
+padding-left:18px;
+}
+
+.reminder li{
+font-size:11px;
+margin-bottom:12px;
+color:#61705F;
+}
+
+.notice{
+background:#F4EFE3;
+border-radius:12px;
+padding:12px;
+}
+
+.notice strong{
+font-size:11px;
+display:block;
+margin-bottom:8px;
+}
+.notice p{
+font-size:10px;
+line-height:1.6;
+color:#666;
+}
+.user-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<aside class="sidebar">
+
+<div
+class="logo"
+style="cursor:pointer;"
+onclick="window.location.href='dashboard.html'">
+<div class="logo-icon">
+<i class="fas fa-user-group"></i>
+</div>
+
+<div>
+<strong>PLMUN</strong>
+<strong>Barkada Hub</strong>
+</div>
+
+</div>
+
+<div class="community">
+YOUR COMMUNITY
+</div>
+
+<div class="menu">
+
+<a href="dashboard.html">
+<i class="fas fa-house"></i>
+Home
+</a>
+
+<a href="discussions.html" class="active">
+    <i class="far fa-comments"></i>
+    Discussions
+</a>
+
+<a href="resources.html">
+<i class="far fa-bookmark"></i>
+Wellness resources
+</a>
+
+<a href="profile.html">
+<i class="far fa-user"></i>
+My profile
+</a>
+</div>
+
+<div class="voice-card">
+
+<h4>Your voice belongs here.</h4>
+
+<p>
+A small thought can start a meaningful conversation.
+</p>
+
+<button onclick="window.location.href='create-discussion.html'">
++ Share a thought
+</button>
+
+</div>
+
+<div class="sidebar-footer">
+<a href="#" onclick="showGuidelines()">
+Community guidelines
+</a>
+<a href="#" onclick="logout()">Sign out</a>
+</div>
+
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+
+<div class="quote">
+A little connection goes a long way.
+</div>
+
+<div class="profile">
+
+<div class="avatar" id="avatar">
+U
+</div>
+
+<div>
+<strong id="studentName">
+Student
+</strong>
+<small>PLMUN student</small>
+</div>
+
+</div>
+</div>
+
+<div class="content">
+
+<a href="discussions.html" class="back-link">
+<i class="fas fa-arrow-left"></i>
+Back to discussions
+</a>
+
+<h1 class="page-title">
+What's on your mind?
+</h1>
+
+<p class="subtitle">
+You can share a little or a lot. Start wherever feels right for you.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<div class="section-title">
+How would you like to share?
+</div>
+
+<div class="share-options">
+
+    <div
+class="option active"
+id="anonymousOption"
+onclick="selectAnonymous()">
+
+    <span>
+        
+        Post anonymously
+    </span>
+
+    <i class="far fa-circle"></i>
+
+</div>
+
+<div
+class="option"
+id="nameOption"
+onclick="selectNamed()">
+
+    <span>
+        
+        Use my name
+    </span>
+
+    <i class="far fa-circle"></i>
+
+</div>
+
+
+</div>
+
+<div class="info-box">
+    
+Your name and profile are hidden from other students on this post. Authorized administrators may access account information for moderation and safety. Anonymous does not mean untraceable.
+</div>
+
+<label>Topic</label>
+
+<select id="topic">
+    <option>Academic life</option>
+    <option>Feelings</option>
+    <option>Friendships</option>
+    <option>Small wins</option>
+    <option>Campus life</option>
+</select>
+
+
+<label>Give your post a title</label>
+
+<input
+id="title"
+type="text"
+placeholder="Give your post a title">
+
+<label>Your experience or concern</label>
+<textarea
+id="content"
+placeholder="Share what's on your mind...">
+</textarea>
+<div class="counter">
+<span>Leave out names and details that could identify anyone.</span>
+<span>226 / 3,000</span>
+</div>
+
+<div class="guideline">
+
+    <input
+        type="checkbox"
+        id="agree"
+        checked>
+
+    <label for="agree">
+        I've read the community guidelines and will share respectfully.
+    </label>
+
+</div>
+
+<div class="actions">
+<button
+type="button"
+class="cancel-btn"
+onclick="window.location.href='discussions.html'">
+Cancel
+</button>
+
+<button
+type="button"
+class="publish-btn"
+onclick="publishPost()">
+<i class="far fa-paper-plane"></i>
+Publish anonymously
+</button>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="side-card">
+
+<h3>HOW YOUR NAME WILL APPEAR</h3>
+
+<div class="preview">
+
+<div class="preview-icon">
+
+</div>
+
+<div>
+<strong id="previewName">
+Anonymous student
+</strong>
+<small>Your profile won't be linked</small>
+</div>
+
+</div>
+
+<p>
+Your post will be visible to the student community. Other students can offer support and reply.
+</p>
+
+</div>
+
+<div class="side-card reminder">
+
+<h2>A gentle reminder</h2>
+<ul>
+<li>Share from your own experience.</li>
+<li>Respect other people's privacy.</li>
+<li>It's okay to step away.</li>
+</ul>
+
+</div>
+
+<div class="notice">
+ 
+
+
+<strong>
+Peer support, not professional care
+</strong>
+
+<p>
+Barkada Hub is not an emergency service. If you feel unsafe or need urgent help, contact local emergency services or a trusted person nearby.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script>
+
+let isAnonymous = true;
+const currentUser =
+JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+if(
+    !currentUser ||
+    currentUser.role === "admin"
+){
+    window.location.href =
+    "login.html";
+}
+
+/* USER INFO */
+
+document.getElementById("studentName").innerText =
+currentUser.fullname;
+
+const initials =
+currentUser.fullname
+.split(" ")
+.map(name => name.charAt(0))
+.join("")
+.substring(0,2);
+
+if(currentUser.photo){
+
+    document.getElementById("avatar")
+    .innerHTML =
+    `<img src="${currentUser.photo}" class="user-photo">`;
+
+}else{
+
+    document.getElementById("avatar").innerText =
+    initials;
+
+}
+
+
+/* PUBLISH POST */
+function selectAnonymous(){
+
+    isAnonymous = true;
+
+    document.getElementById("anonymousOption")
+    .classList.add("active");
+
+    document.getElementById("nameOption")
+    .classList.remove("active");
+
+    document.getElementById("anonymousOption").querySelector("i:last-child")
+    .className = "fas fa-check-circle";
+
+    document.getElementById("nameOption").querySelector("i:last-child")
+    .className = "far fa-circle";
+
+    document.getElementById("previewName").innerText =
+    "Anonymous student";
+
+    document.querySelector(".publish-btn").innerHTML =
+    '<i class="far fa-paper-plane"></i> Publish anonymously';
+
+}
+
+function selectNamed(){
+
+    isAnonymous = false;
+
+    document.getElementById("nameOption")
+    .classList.add("active");
+
+    document.getElementById("anonymousOption")
+    .classList.remove("active");
+
+    document.getElementById("nameOption").querySelector("i:last-child")
+    .className = "fas fa-check-circle";
+
+    document.getElementById("anonymousOption").querySelector("i:last-child")
+    .className = "far fa-circle";
+
+    document.getElementById("previewName").innerText =
+    currentUser.fullname;
+
+    document.querySelector(".publish-btn").innerHTML =
+    '<i class="far fa-paper-plane"></i> Publish using my name';
+
+}
+
+function publishPost(){
+
+    const topic =
+    document.getElementById("topic").value;
+
+    const title =
+    document.getElementById("title")
+    .value.trim();
+
+    const content =
+    document.getElementById("content")
+    .value.trim();
+
+    if(title === ""){
+
+        alert(
+        "Please enter a title."
+        );
+
+        return;
+
+    }
+
+    if(content === ""){
+
+        alert(
+        "Please enter your discussion content."
+        );
+
+        return;
+
+    }
+
+    if(
+    !document.getElementById(
+    "agree"
+    ).checked
+    ){
+
+        alert(
+        "Please agree to the community guidelines."
+        );
+
+        return;
+
+    }
+
+    if(
+    !confirm(
+    "Are you ready to publish this discussion?"
+    )
+    ){
+
+        return;
+
+    }
+
+    let posts =
+    JSON.parse(
+    localStorage.getItem("posts")
+    ) || [];
+
+    const newPost = {
+
+        id: Date.now(),
+
+       author:
+isAnonymous
+? "Anonymous Student"
+: currentUser.fullname,
+
+        topic: topic,
+
+        title: title,
+
+        content: content,
+
+        supports: 0,
+
+        replies: 0,
+
+        createdAt:
+        new Date().toLocaleString("en-PH")
+
+    };
+
+    posts.unshift(newPost);
+
+    localStorage.setItem(
+        "posts",
+        JSON.stringify(posts)
+    );
+
+    alert(
+    "Discussion posted successfully!"
+    );
+
+    window.location.href =
+    "discussions.html";
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    if(
+    confirm(
+    "Are you sure you want to sign out?"
+    )){
+
+        localStorage.removeItem(
+        "currentUser"
+        );
+
+        window.location.replace(
+        "login.html"
+        );
+
+    }
+
+}
+
+
+/* COMMUNITY GUIDELINES */
+
+function showGuidelines(){
+
+    alert(`
+BARKADA HUB GUIDELINES
+
+• Respect privacy
+• Be supportive
+• No bullying
+• No harassment
+• No hate speech
+• Report unsafe content
+    `);
+
+}
+
+</script>
+</body>
+</html>
